@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+}

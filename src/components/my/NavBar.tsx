@@ -1,64 +1,122 @@
-import {
-  Box,
-  Flex,
-  HStack,
-  Text,
-  Link,
-  Button,
-  Icon,
-  Spacer,
-} from "@chakra-ui/react";
+import { Box, Flex, HStack, Text, Button, Icon } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import { LuPhone, LuMail, LuMapPin, LuClock } from "react-icons/lu";
 
-export default function Navbar() {
+export default function NavBar() {
+  const navigate = useNavigate();
+
+  const navItemStyle = {
+    cursor: "pointer",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontWeight: "600",
+    position: "relative",
+    _after: {
+      content: '""',
+      position: "absolute",
+      width: "0%",
+      height: "1px",
+      bottom: "-4px",
+      left: 0,
+      bg: "black",
+      transition: "width 0.3s ease",
+    },
+    _hover: {
+      _after: { width: "100%" },
+    },
+  };
+
   return (
-    <Box position="sticky" top="0" zIndex="1000" bg="#d6ccc2" color="#2b2b2b">
-      {/* TOP INFO BAR */}
-      <Flex bg="#cbbfb3" px="8" py="2" justify="center">
-        <HStack fontSize="sm">
+    <Box
+      position="sticky"
+      top="0"
+      zIndex="1000"
+      bg="gold.200"
+      backdropFilter="blur(10px)"
+    >
+      {/* TOP BAR */}
+      <Flex bg="gold.300" px="8" py="2" justify="center">
+        <HStack gap="6" fontSize="sm">
           <HStack>
-            <Icon as={LuPhone} />
-            <Text>+BR TELEFONA</Text>
+            <Icon as={LuPhone} boxSize="14px" />
+            <Text fontFamily="'Cormorant Garamond', serif" fontWeight="500">
+              +381 00 000 000
+            </Text>
           </HStack>
 
           <HStack>
-            <Icon as={LuMail} />
-            <Text>EMAIL</Text>
+            <Icon as={LuMail} boxSize="14px" />
+            <Text fontFamily="'Cormorant Garamond', serif" fontWeight="500">
+              studio@email.com
+            </Text>
           </HStack>
 
           <HStack>
-            <Icon as={LuMapPin} />
-            <Text>ADRESA</Text>
+            <Icon as={LuMapPin} boxSize="14px" />
+            <Text fontFamily="'Cormorant Garamond', serif" fontWeight="500">
+              Belgrade
+            </Text>
           </HStack>
 
           <HStack>
-            <Icon as={LuClock} />
-            <Text>RADNO VREME</Text>
+            <Icon as={LuClock} boxSize="14px" />
+            <Text fontFamily="'Cormorant Garamond', serif" fontWeight="500">
+              Mon-Sat 09-18
+            </Text>
           </HStack>
         </HStack>
       </Flex>
 
       {/* MAIN NAV */}
-      <Flex px="6" py="2" align="center">
+      <Flex
+        px="8"
+        py="4"
+        align="center"
+        borderTop="1px solid"
+        borderColor="blackAlpha.200"
+      >
         {/* LOGO */}
-        <Text fontSize="xl" fontWeight="bold">
-          LOGO
+        <Text
+          fontFamily="'Cormorant Garamond', serif"
+          fontSize="2xl"
+          fontWeight="600"
+          letterSpacing="0.5px"
+        >
+          Shade Atelier
         </Text>
 
-        {/* LINKS */}
-        <HStack ml="4" wordSpacing={"4"}>
-          <Link>Home</Link>
-          <Link>Services</Link>
-          <Link>Shop</Link>
-          <Link>Team</Link>
-          <Link>Pricing</Link>
-          <Link>Contact</Link>
+        {/* NAV LINKS */}
+        <HStack ml="14" gap="10">
+          <Text {...navItemStyle} onClick={() => navigate("/")}>
+            Home
+          </Text>
+
+          <Text {...navItemStyle} onClick={() => navigate("/services")}>
+            Services
+          </Text>
+
+          <Text {...navItemStyle}>Shop</Text>
+
+          <Text {...navItemStyle}>Team</Text>
+
+          <Text {...navItemStyle}>Pricing</Text>
+
+          <Text {...navItemStyle}>Contact</Text>
         </HStack>
 
-        {/* PUSH CTA RIGHT */}
         <Box flex="1" />
+
         {/* CTA BUTTON */}
-        <Button bg="#a68a64" color="white" _hover={{ bg: "#927656" }}>
+        <Button
+          bg="linear-gradient(135deg,#e8d3a3,#b79b76)"
+          color="black"
+          borderRadius="full"
+          px="6"
+          fontWeight="600"
+          _hover={{
+            transform: "translateY(-2px)",
+            boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
+          }}
+        >
           Book Now
         </Button>
       </Flex>

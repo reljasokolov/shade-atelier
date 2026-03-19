@@ -1,26 +1,38 @@
-import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/my/NavBar";
-import { ColorModeButton } from "../src/components/ui/color-mode";
+import Home from "./components/my/Home";
+import ProceduresSection from "./components/my/ProcedureSection";
+import ProcedureDetails from "./components/my/ProcedureDetails";
+import AboutMe from "./components/my/AboutMe";
+import Services from "./components/my/Services";
+
+import { Box } from "@chakra-ui/react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Grid
-      bg={"bg.canvas"}
-      minH="100vh"
-      templateRows="auto 1fr"
-      templateColumns={{ base: "1fr", lg: "250px 1fr" }}
-      templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "aside main"`,
-      }}
-    >
-      <GridItem area="nav">
-        <NavBar></NavBar>
-        <ColorModeButton position="fixed" top="0px" right="0px" zIndex="1000" />
-      </GridItem>
+    <BrowserRouter>
+      <Box bg="gold.100" overflowX="hidden" minH="100vh">
+        <NavBar />
 
-      <GridItem area="main">main</GridItem>
-    </Grid>
+        <Routes>
+          {/* HOME */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Home />
+                <ProceduresSection />
+                <AboutMe />
+              </>
+            }
+          />
+
+          <Route path="/services" element={<ProceduresSection />} />
+
+          <Route path="/procedure/:id" element={<ProcedureDetails />} />
+        </Routes>
+      </Box>
+    </BrowserRouter>
   );
 }
 
