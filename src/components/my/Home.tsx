@@ -11,7 +11,6 @@ export default function Home() {
         backgroundPosition="center"
         position="relative"
       >
-        {/* overlay */}
         <Box position="absolute" inset="0" bg="blackAlpha.500" />
 
         <Flex

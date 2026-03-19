@@ -33,7 +33,6 @@ export default function NavBar() {
       bg="gold.200"
       backdropFilter="blur(10px)"
     >
-      {/* TOP BAR */}
       <Flex bg="gold.300" px="8" py="2" justify="center">
         <HStack gap="6" fontSize="sm">
           <HStack>
@@ -66,7 +65,6 @@ export default function NavBar() {
         </HStack>
       </Flex>
 
-      {/* MAIN NAV */}
       <Flex
         px="8"
         py="4"
@@ -74,7 +72,6 @@ export default function NavBar() {
         borderTop="1px solid"
         borderColor="blackAlpha.200"
       >
-        {/* LOGO */}
         <Text
           fontFamily="'Cormorant Garamond', serif"
           fontSize="2xl"
@@ -84,7 +81,6 @@ export default function NavBar() {
           Shade Atelier
         </Text>
 
-        {/* NAV LINKS */}
         <HStack ml="14" gap="10">
           <Text {...navItemStyle} onClick={() => navigate("/")}>
             Home
@@ -105,7 +101,6 @@ export default function NavBar() {
 
         <Box flex="1" />
 
-        {/* CTA BUTTON */}
         <Button
           bg="linear-gradient(135deg,#e8d3a3,#b79b76)"
           color="black"

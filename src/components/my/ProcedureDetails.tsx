@@ -42,7 +42,6 @@ export default function ProcedureDetails() {
 
   const [animate, setAnimate] = useState(false);
 
-  // trigger animacije kad se menja procedura
   useEffect(() => {
     setAnimate(false);
 
@@ -58,8 +57,7 @@ export default function ProcedureDetails() {
   return (
     <Box maxW="1200px" mx="auto" py={20} px={6}>
       <Flex gap={10} align="start" direction={{ base: "column", md: "row" }}>
-        {/* SIDEBAR */}
-        <VStack w="260px" align="stretch" spacing={4}>
+        <VStack w="260px" align="stretch" gap={4}>
           {Object.entries(data).map(([key, item]) => {
             const isActive = key === id;
 
@@ -92,13 +90,12 @@ export default function ProcedureDetails() {
             );
           })}
 
-          {/* CONTACT CARD */}
           <Box bg="white" p={5} borderRadius="lg" mt={4} boxShadow="md">
             <Text mb={4} fontWeight="bold">
               Контакти
             </Text>
 
-            <VStack align="start" spacing={4}>
+            <VStack align="start" gap={4}>
               <HStack>
                 <Icon as={LuPhone} />
                 <Text fontSize="sm">+359 895 614 685</Text>
@@ -117,7 +114,6 @@ export default function ProcedureDetails() {
           </Box>
         </VStack>
 
-        {/* MAIN CONTENT */}
         <Box
           flex="1"
           key={id}
@@ -140,7 +136,7 @@ export default function ProcedureDetails() {
               _hover={{ transform: "scale(1.02)" }}
             />
 
-            <VStack align="start" spacing={5}>
+            <VStack align="start" gap={5}>
               <Text color="gray.600" lineHeight="1.8">
                 {proc.desc}
               </Text>
@@ -149,7 +145,6 @@ export default function ProcedureDetails() {
             </VStack>
           </Flex>
 
-          {/* DETAILS */}
           <Text mt={10} fontSize="2xl" fontWeight="600" color="gold.500">
             Детайли за услугата
           </Text>
@@ -158,7 +153,6 @@ export default function ProcedureDetails() {
             {proc.details}
           </Text>
 
-          {/* PRICE */}
           <Text mt={8} fontSize="2xl" fontWeight="600" color="gold.500">
             Цени
           </Text>

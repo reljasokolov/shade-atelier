@@ -42,17 +42,6 @@ const procedures = [
 export default function ProcedureSection() {
   const navigate = useNavigate();
 
-  const fadeUp = keyframes`
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  `;
-
   const { ref, isVisible } = useInView();
   return (
     <Box ref={ref} maxW="1400px" mx="auto" py={20} px={6}>
@@ -66,11 +55,9 @@ export default function ProcedureSection() {
           Услуги
         </Text>
 
-        {/* ✨ LUX LINE */}
         <Box mt={3} w="80px" h="2px" bg="gold.500" borderRadius="full" />
       </Box>
 
-      {/* 🔥 SLIDER */}
       <Swiper
         modules={[Pagination]}
         pagination={{ clickable: true }}
@@ -87,13 +74,12 @@ export default function ProcedureSection() {
             <VStack
               cursor="pointer"
               onClick={() => navigate(`/procedure/${proc.id}`)}
-              spacing={5}
+              gap={5}
               opacity={isVisible ? 1 : 0}
               transform={isVisible ? "translateY(0)" : "translateY(40px)"}
               transition="all 0.6s ease"
               style={{ transitionDelay: `${index * 0.1}s` }}
             >
-              {/* 🔥 IMAGE */}
               <Box
                 position="relative"
                 borderRadius="full"
@@ -109,7 +95,6 @@ export default function ProcedureSection() {
               >
                 <Image src={proc.img} w="100%" h="100%" objectFit="cover" />
 
-                {/* ✨ GLOW OVERLAY */}
                 <Box
                   position="absolute"
                   top="0"
@@ -123,7 +108,6 @@ export default function ProcedureSection() {
                 />
               </Box>
 
-              {/* TEXT */}
               <Text
                 fontWeight="600"
                 fontFamily="'Cormorant Garamond', serif"

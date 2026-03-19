@@ -3,7 +3,6 @@ import Home from "./components/my/Home";
 import ProceduresSection from "./components/my/ProcedureSection";
 import ProcedureDetails from "./components/my/ProcedureDetails";
 import AboutMe from "./components/my/AboutMe";
-import Services from "./components/my/Services";
 
 import { Box } from "@chakra-ui/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,7 +14,6 @@ function App() {
         <NavBar />
 
         <Routes>
-          {/* HOME */}
           <Route
             path="/"
             element={

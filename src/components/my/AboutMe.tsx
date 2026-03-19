@@ -29,7 +29,6 @@ export default function AboutMe() {
             boxShadow="xl"
           />
 
-          {/* subtle frame */}
           <Box
             position="absolute"
             top="20px"
@@ -43,7 +42,6 @@ export default function AboutMe() {
           />
         </Box>
 
-        {/* TEXT */}
         <VStack align="start" flex="1">
           <Heading fontFamily="'Playfair Display', serif" fontSize="4xl">
             За мен
@@ -82,7 +80,6 @@ export default function AboutMe() {
             събития и поводи.
           </Text>
 
-          {/* BUTTONS */}
           <Flex gap={4} pt={4}>
             <Button
               bg="#1f2a37"
