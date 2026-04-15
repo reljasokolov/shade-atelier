@@ -3,6 +3,7 @@ import Home from "./components/my/Home";
 import ProceduresSection from "./components/my/ProcedureSection";
 import ProcedureDetails from "./components/my/ProcedureDetails";
 import AboutMe from "./components/my/AboutMe";
+import Contact from "./components/my/Contact";
 
 import { Box } from "@chakra-ui/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -21,6 +22,7 @@ function App() {
                 <Home />
                 <ProceduresSection />
                 <AboutMe />
+                <Contact />
               </>
             }
           />

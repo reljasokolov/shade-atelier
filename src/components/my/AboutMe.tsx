@@ -7,19 +7,32 @@ import {
   Heading,
   Button,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+
+const MotionBox = motion(Box);
+const MotionFlex = motion(Flex);
 
 export default function AboutMe() {
   return (
     <Box bg="gold.100" minH="100vh" px={{ base: 4, md: 10 }} py={16}>
-      <Flex
+      <MotionFlex
         maxW="1200px"
         mx="auto"
         gap={12}
         direction={{ base: "column", md: "row" }}
         align="center"
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
       >
         {/* IMAGE */}
-        <Box position="relative">
+        <MotionBox
+          position="relative"
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <Image
             src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f"
             borderRadius="20px"
@@ -27,8 +40,11 @@ export default function AboutMe() {
             h="500px"
             objectFit="cover"
             boxShadow="xl"
+            transition="0.4s"
+            _hover={{ transform: "scale(1.03)" }}
           />
 
+          {/* frame */}
           <Box
             position="absolute"
             top="20px"
@@ -40,67 +56,85 @@ export default function AboutMe() {
             borderRadius="20px"
             zIndex={-1}
           />
-        </Box>
+        </MotionBox>
 
-        <VStack align="start" flex="1">
-          <Heading fontFamily="'Playfair Display', serif" fontSize="4xl">
-            За мен
-          </Heading>
-          <Box mt={3} w="80px" h="2px" bg="gold.500" borderRadius="full" />
+        {/* TEXT */}
+        <MotionBox
+          flex="1"
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <VStack align="start" gap={5}>
+            <Heading fontFamily="'Playfair Display', serif" fontSize="4xl">
+              За мен
+            </Heading>
 
-          <Text color="gray.600" lineHeight="1.8">
-            Аз съм Деница Караджачка, професионален гримьор, базиран в София,
-            България. Имам над 10 години опит в индустрията, включително работа
-            с водещи козметични брандове и участие в множество кампании.
-          </Text>
+            <MotionBox
+              w="80px"
+              h="2px"
+              bg="gold.500"
+              borderRadius="full"
+              initial={{ width: 0 }}
+              whileInView={{ width: "80px" }}
+              transition={{ duration: 0.6 }}
+            />
 
-          <Text color="gray.600" lineHeight="1.8">
-            Гримът за мен е не просто работа — той е изкуство и страст. Всеки
-            клиент е уникален и моята мисия е да подчертая естествената красота
-            и индивидуалност.
-          </Text>
+            <Text color="gray.600" lineHeight="1.8">
+              Аз съм Деница Караджачка, професионален гримьор, базиран в София,
+              България. Имам над 10 години опит в индустрията.
+            </Text>
 
-          <Heading fontSize="2xl" fontFamily="'Playfair Display', serif" pt={4}>
-            Защо да избереш мен
-          </Heading>
+            <Text color="gray.600" lineHeight="1.8">
+              Гримът за мен е не просто работа — той е изкуство и страст.
+            </Text>
 
-          <VStack align="start" color="gray.600">
-            <Text>• Индивидуален подход към всеки клиент</Text>
-            <Text>• Премиум продукти от водещи марки</Text>
-            <Text>• Дълготраен и безупречен резултат</Text>
-            <Text>• Високи хигиенни стандарти</Text>
+            <Heading fontSize="2xl" fontFamily="'Playfair Display', serif">
+              Защо да избереш мен
+            </Heading>
+
+            <VStack align="start" gap={2} color="gray.600">
+              <Text>• Индивидуален подход</Text>
+              <Text>• Премиум продукти</Text>
+              <Text>• Дълготраен резултат</Text>
+              <Text>• Висока хигиена</Text>
+            </VStack>
+
+            <Heading fontSize="2xl" fontFamily="'Playfair Display', serif">
+              Локация
+            </Heading>
+
+            <Text color="gray.600">София + мобилни услуги за събития.</Text>
+
+            {/* BUTTONS */}
+            <Flex gap={4} pt={4}>
+              <Button
+                bg="#1f2a37"
+                color="white"
+                borderRadius="full"
+                _hover={{
+                  bg: "#111827",
+                  transform: "translateY(-2px)",
+                }}
+              >
+                Свържи се
+              </Button>
+
+              <Button
+                bg="gold.400"
+                color="black"
+                borderRadius="full"
+                _hover={{
+                  transform: "translateY(-2px)",
+                  boxShadow: "lg",
+                }}
+              >
+                Запази час
+              </Button>
+            </Flex>
           </VStack>
-
-          <Heading fontSize="2xl" fontFamily="'Playfair Display', serif" pt={4}>
-            Локация
-          </Heading>
-
-          <Text color="gray.600">
-            Работя основно в София, но предлагам и мобилни услуги за специални
-            събития и поводи.
-          </Text>
-
-          <Flex gap={4} pt={4}>
-            <Button
-              bg="#1f2a37"
-              color="white"
-              borderRadius="full"
-              _hover={{ bg: "#111827" }}
-            >
-              Свържи се с мен
-            </Button>
-
-            <Button
-              bg="gold.400"
-              color="black"
-              borderRadius="full"
-              _hover={{ opacity: 0.9 }}
-            >
-              Запази час
-            </Button>
-          </Flex>
-        </VStack>
-      </Flex>
+        </MotionBox>
+      </MotionFlex>
     </Box>
   );
 }

@@ -3,11 +3,9 @@ import { createSystem, defaultConfig } from "@chakra-ui/react"
 export const theme = {
   tokens: {
     colors: {
-      /* Background za light / dark */
-      brandBgLight: { value: "#FBF3D1" },
-      brandBgDark: { value: "#B6AE9F" },
+      brandBgLight: { value: "#fbf9f4" },
+      brandBgDark: { value: "#1a1816" },
 
-      /* Champagne palette */
       champagne: {
         50: { value: "#fdfcf7" },
         100: { value: "#f7f1df" },
@@ -21,7 +19,6 @@ export const theme = {
         900: { value: "#44361c" },
       },
 
-      /* Nude palette */
       nude: {
         50: { value: "#faf6f3" },
         100: { value: "#f1e3da" },
@@ -35,7 +32,6 @@ export const theme = {
         900: { value: "#3c2b21" },
       },
 
-      /* Rose palette */
       rose: {
         50: { value: "#fff5f7" },
         100: { value: "#ffe3e8" },
@@ -49,19 +45,36 @@ export const theme = {
         900: { value: "#661c2b" },
       },
 
-      /* Gold accent */
-     gold: {
-  50: { value: "#fdfaf5" },
-  100: { value: "#f6efe4" },
-  200: { value: "#eadfcd" },
-  300: { value: "#dcc9b0" },
-  400: { value: "#cdb394" },
-  500: { value: "#b79b76" }, // primary accent
-  600: { value: "#9f835f" },
-  700: { value: "#836a4c" },
-  800: { value: "#67533b" },
-  900: { value: "#4d3d2b" },
-},
+      /* 💎 LUXURY GOLD */
+      gold: {
+        50: { value: "#fbf9f4" },
+        100: { value: "#f2eadc" },
+        200: { value: "#e6d7b8" },
+        300: { value: "#d9c293" },
+        400: { value: "#c9aa6d" },
+        500: { value: "#b89652" }, // 🔥 main
+        600: { value: "#9e7d3f" },
+        700: { value: "#7f632f" },
+        800: { value: "#5f4a22" },
+        900: { value: "#3f3216" },
+      },
+    },
+
+    fonts: {
+      heading: { value: "'Playfair Display', serif" },
+      body: { value: "'Inter', sans-serif" },
+    },
+
+    radii: {
+      xl: { value: "16px" },
+      "2xl": { value: "22px" },
+      full: { value: "9999px" },
+    },
+
+    shadows: {
+      gold: { value: "0 10px 30px rgba(184,150,82,0.25)" },
+      luxury: { value: "0 20px 60px rgba(0,0,0,0.15)" },
+      soft: { value: "0 8px 25px rgba(0,0,0,0.08)" },
     },
   },
 

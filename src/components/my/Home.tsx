@@ -1,12 +1,13 @@
 import { Box, Flex, Heading, Text, Button } from "@chakra-ui/react";
 import { RiArrowRightLine } from "react-icons/ri";
-
+import banner from "../../assets/banner.jpg";
+import BookingModal from "./BookingModal";
 export default function Home() {
   return (
     <Box w="100vw" position="relative" left="50%" transform="translateX(-50%)">
       <Box
         h={{ base: "500px", md: "650px" }}
-        backgroundImage="url('https://images.unsplash.com/photo-1607746882042-944635dfe10e')"
+        backgroundImage={`url(${banner})`}
         backgroundSize="cover"
         backgroundPosition="center"
         position="relative"
@@ -47,23 +48,24 @@ export default function Home() {
               NEKI UMETNIČKI TEKST NEKI UMETNIČKI TEKST NEKI UMETNIČKI TEKST
               NEKI UMETNIČKI TEKST NEKI UMETNIČKI TEKST.
             </Text>
-
-            <Button
-              mt={6}
-              w="full"
-              size="lg"
-              bg="linear-gradient(135deg, #e9cb79, #91751a)"
-              color="black"
-              fontWeight="600"
-              letterSpacing="0.5px"
-              _hover={{
-                transform: "translateY(-2px)",
-                boxShadow: "0 12px 35px rgba(0,0,0,0.4)",
-              }}
-            >
-              Book Appointment
-              <RiArrowRightLine />
-            </Button>
+            <BookingModal>
+              <Button
+                mt={6}
+                w="full"
+                size="lg"
+                bg="linear-gradient(135deg, #e9cb79, #91751a)"
+                color="black"
+                fontWeight="600"
+                letterSpacing="0.5px"
+                _hover={{
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 12px 35px rgba(0,0,0,0.4)",
+                }}
+              >
+                Book Appointment
+                <RiArrowRightLine />
+              </Button>
+            </BookingModal>
           </Box>
         </Flex>
       </Box>
