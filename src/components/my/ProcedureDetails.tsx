@@ -3,34 +3,52 @@ import { useParams, useNavigate } from "react-router-dom";
 import { LuPhone, LuMail, LuMapPin } from "react-icons/lu";
 import { useEffect, useState } from "react";
 
+import night from "../../assets/night.png";
+import weding from "../../assets/weding.png";
+import everyday from "../../assets/everyday.png";
+import prom from "../../assets/prom.png";
+import tentative from "../../assets/tentative.png";
+
 const data = {
-  hydrafacial: {
-    title: "Hydrafacial Platinum",
-    img: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273",
-    desc: "Луксозна процедура за дълбоко почистване и хидратация на кожата.",
-    details: "Продължителност: 60 минути • Резултат веднага след процедурата.",
-    price: "120€",
+  night: {
+    title: "Вечерен грим",
+    img: night,
+    desc: "Професионален вечерен грим, който подчертава чертите на лицето и придава изискан и дълготраен блясък.",
+    details:
+      "Продължителност: 60–75 минути • Включва консултация, подготовка на кожата и фиксиране за дълготраен ефект.",
+    price: "50€",
   },
-  laser: {
-    title: "Laser Epilation",
-    img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9",
-    desc: "Дълготрайно премахване на нежеланото окосмяване.",
-    details: "Продължителност: 45 минути • 6+ третмана за максимален ефект.",
-    price: "80€",
+  weding: {
+    title: "Сватбен грим",
+    img: weding,
+    desc: "Елегантен и дълготраен сватбен грим, съобразен с индивидуалните черти, стил и визия на булката за перфектен външен вид през целия ден.",
+    details:
+      "Продължителност: 75–90 минути • Включва пробен грим, подготовка на кожата и фиксиране за устойчивост през целия ден и нощ.",
+    price: "60€",
   },
-  microneedling: {
-    title: "Microneedling",
-    img: "https://images.unsplash.com/photo-1519415943484-9fa1873496d4",
-    desc: "Подобрява текстурата и стимулира колаген.",
-    details: "Продължителност: 50 минути • Видими резултати след 2 процедури.",
-    price: "100€",
+  everyday: {
+    title: "Ежедневен грим",
+    img: everyday,
+    desc: "Лек и естествен ежедневен грим, който подчертава естествената красота и придава свеж и поддържан вид през целия ден.",
+    details:
+      "Продължителност: 40–60 минути • Включва подготовка на кожата, леко покритие, естествено оформяне и фиксиране за дълготраен свеж ефект.",
+    price: "40€",
   },
-  body: {
-    title: "Body Therapy",
-    img: "https://images.unsplash.com/photo-1556228720-195a672e8a03",
-    desc: "Релаксираща терапия за тяло и ум.",
-    details: "Продължителност: 70 минути • Пълен релакс.",
-    price: "90€",
+  prom: {
+    title: "Абитуриентски грим",
+    img: prom,
+    desc: "Елегантен и дълготраен абитуриентски грим, създаден да подчертае красотата и индивидуалния стил за един от най-специалните дни.",
+    details:
+      "Продължителност: 60–75 минути • Включва консултация, подготовка на кожата, подчертаване на очи и контуриране за перфектен завършен вид.",
+    price: "60€",
+  },
+  tentative: {
+    title: "Пробен грим",
+    img: tentative,
+    desc: "Пробен грим, който позволява избор на перфектната визия чрез консултация и тестване на различни стилове според индивидуалните предпочитания.",
+    details:
+      "Продължителност: 60–90 минути • Включва подробна консултация, избор на визия и проба на грим за постигане на желания краен резултат.",
+    price: "50€",
   },
 };
 
@@ -145,16 +163,8 @@ export default function ProcedureDetails() {
             </VStack>
           </Flex>
 
-          <Text mt={10} fontSize="2xl" fontWeight="600" color="gold.500">
-            Детайли за услугата
-          </Text>
-
-          <Text mt={4} color="gray.600">
-            {proc.details}
-          </Text>
-
           <Text mt={8} fontSize="2xl" fontWeight="600" color="gold.500">
-            Цени
+            Ценa
           </Text>
 
           <Text mt={4} fontSize="2xl" fontWeight="bold">

@@ -6,6 +6,37 @@ import BookingModal from "./BookingModal";
 export default function NavBar() {
   const navigate = useNavigate();
 
+  // 🔥 Apple-style smooth scroll
+  const smoothScrollTo = (targetId: string, duration = 1600) => {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    const start = window.pageYOffset;
+    const end = target.getBoundingClientRect().top + window.pageYOffset;
+    const distance = end - start;
+
+    let startTime: number;
+
+    const easeInOutCubic = (t: number) => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    const animation = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+
+      const eased = easeInOutCubic(progress);
+      window.scrollTo(0, start + distance * eased);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  };
+
   const navItemStyle = {
     cursor: "pointer",
     fontFamily: "'Cormorant Garamond', serif",
@@ -41,7 +72,6 @@ export default function NavBar() {
     >
       {/* 🔥 TOP BAR (DESKTOP ONLY) */}
       <Box display={{ base: "none", md: "block" }}>
-        {" "}
         <Flex bg="gold.200" px="8" py="2" justify="center">
           <HStack gap="8" fontSize="sm">
             <HStack>
@@ -83,22 +113,52 @@ export default function NavBar() {
 
         {/* 🔥 DESKTOP MENU */}
         <Box display={{ base: "none", md: "block" }}>
-          {" "}
           <HStack ml="14" gap="10">
             <Text {...navItemStyle} onClick={() => navigate("/")}>
               Home
             </Text>
 
-            <Text {...navItemStyle} onClick={() => navigate("/services")}>
+            <Text
+              {...navItemStyle}
+              onClick={() => {
+                if (window.location.pathname !== "/") {
+                  navigate("/");
+                  setTimeout(() => smoothScrollTo("services", 1000), 100);
+                } else {
+                  smoothScrollTo("services", 1800);
+                }
+              }}
+            >
               Services
+            </Text>
+            <Text
+              {...navItemStyle}
+              onClick={() => {
+                if (window.location.pathname !== "/") {
+                  navigate("/");
+                  setTimeout(() => smoothScrollTo("about", 1000), 100);
+                } else {
+                  smoothScrollTo("about", 1800);
+                }
+              }}
+            >
+              About me
             </Text>
             <BookingModal>
               <Text {...navItemStyle}>Shop</Text>
             </BookingModal>
-            <Text {...navItemStyle}>Team</Text>
-            <Text {...navItemStyle}>Pricing</Text>
 
-            <Text {...navItemStyle} onClick={() => navigate("/contact")}>
+            <Text
+              {...navItemStyle}
+              onClick={() => {
+                if (window.location.pathname !== "/") {
+                  navigate("/");
+                  setTimeout(() => smoothScrollTo("contact", 1800), 100);
+                } else {
+                  smoothScrollTo("contact", 1800);
+                }
+              }}
+            >
               Contact
             </Text>
           </HStack>
@@ -106,9 +166,8 @@ export default function NavBar() {
 
         <Box flex="1" />
 
-        {/* 🔥 MOBILE (MAIL ONLY) */}
+        {/* 🔥 MOBILE */}
         <Box display={{ base: "flex", md: "none" }}>
-          {" "}
           <HStack gap={2}>
             <Icon as={LuMail} boxSize="16px" />
             <Text fontSize="sm">studio@email.com</Text>

@@ -14,7 +14,7 @@ const MotionFlex = motion(Flex);
 
 export default function AboutMe() {
   return (
-    <Box bg="gold.100" minH="100vh" px={{ base: 4, md: 10 }} py={16}>
+    <Box bg="gold.100" minH="100vh" px={{ base: 4, md: 10 }} py={16} id="about">
       <MotionFlex
         maxW="1200px"
         mx="auto"
