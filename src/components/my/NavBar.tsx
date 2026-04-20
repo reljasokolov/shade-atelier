@@ -136,7 +136,7 @@ export default function NavBar() {
               onClick={() => {
                 if (window.location.pathname !== "/") {
                   navigate("/");
-                  setTimeout(() => smoothScrollTo("about", 1000), 100);
+                  setTimeout(() => smoothScrollTo("about", 2000), 100);
                 } else {
                   smoothScrollTo("about", 1800);
                 }
