@@ -4,22 +4,22 @@ import { LuPhone, LuMail, LuMapPin, LuClock } from "react-icons/lu";
 import BookingModal from "./BookingModal";
 
 export default function NavBar() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // za navigaciju
 
-  // 🔥 Apple-style smooth scroll
   const smoothScrollTo = (targetId: string, duration = 1600) => {
-    const target = document.getElementById(targetId);
+    // funkcija za skrolovanje do elementa, 1.6s
+    const target = document.getElementById(targetId); // pronalazenje elementa
     if (!target) return;
 
-    const start = window.pageYOffset;
-    const end = target.getBoundingClientRect().top + window.pageYOffset;
-    const distance = end - start;
+    const start = window.pageYOffset; // trenutna
+    const end = target.getBoundingClientRect().top + window.pageYOffset; // gde se nalazi element
+    const distance = end - start; // koliko da skroluje
 
-    let startTime: number;
+    let startTime: number; // vreme pocetka animacije
 
     const easeInOutCubic = (t: number) => {
       return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    };
+    }; // brzina animacije (smooth)
 
     const animation = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
@@ -70,7 +70,6 @@ export default function NavBar() {
       borderBottom="1px solid"
       borderColor="blackAlpha.100"
     >
-      {/* 🔥 TOP BAR (DESKTOP ONLY) */}
       <Box display={{ base: "none", md: "block" }}>
         <Flex bg="gold.200" px="8" py="2" justify="center">
           <HStack gap="8" fontSize="sm">
@@ -97,9 +96,7 @@ export default function NavBar() {
         </Flex>
       </Box>
 
-      {/* 🔥 MAIN NAV */}
       <Flex px={{ base: 4, md: 8 }} py="4" align="center" bg="gold.300">
-        {/* LOGO */}
         <Text
           fontFamily="'Cormorant Garamond', serif"
           fontSize={{ base: "lg", md: "2xl" }}
@@ -111,7 +108,6 @@ export default function NavBar() {
           Shade Atelier
         </Text>
 
-        {/* 🔥 DESKTOP MENU */}
         <Box display={{ base: "none", md: "block" }}>
           <HStack ml="14" gap="10">
             <Text {...navItemStyle} onClick={() => navigate("/")}>
@@ -166,7 +162,6 @@ export default function NavBar() {
 
         <Box flex="1" />
 
-        {/* 🔥 MOBILE */}
         <Box display={{ base: "flex", md: "none" }}>
           <HStack gap={2}>
             <Icon as={LuMail} boxSize="16px" />
@@ -174,7 +169,6 @@ export default function NavBar() {
           </HStack>
         </Box>
 
-        {/* 🔥 CTA BUTTON */}
         <BookingModal>
           <Button
             ml={{ base: 2, md: 0 }}
