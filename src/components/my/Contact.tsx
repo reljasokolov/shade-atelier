@@ -12,10 +12,9 @@ import {
   Icon,
   Link,
 } from "@chakra-ui/react";
-import { useState } from "react";
 
 import { useInView } from "./useInView";
-import { LuPhone, LuMail, LuMapPin, LuStar } from "react-icons/lu";
+import { LuPhone, LuMail, LuMapPin } from "react-icons/lu";
 import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 
 const socials = [
@@ -26,8 +25,8 @@ const socials = [
 
 export default function Contact() {
   const { ref: titleRef, isVisible: titleVisible } = useInView();
-  const { ref: leftRef, isVisible: leftVisible } = useInView();
-  const { ref: rightRef, isVisible: rightVisible } = useInView();
+  const { ref: leftRef } = useInView();
+  const { ref: rightRef } = useInView();
 
   return (
     <Box bg="gold.100" minH="100vh" px={{ base: 4, md: 10 }} py={20}>

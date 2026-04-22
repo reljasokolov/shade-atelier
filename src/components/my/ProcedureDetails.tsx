@@ -1,6 +1,5 @@
-import { Box, Flex, Image, Text, VStack, HStack, Icon } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, VStack } from "@chakra-ui/react";
 import { useParams, useNavigate } from "react-router-dom";
-import { LuPhone, LuMail, LuMapPin } from "react-icons/lu";
 import { useEffect, useState } from "react";
 
 import night from "../../assets/night.png";
