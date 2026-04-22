@@ -85,7 +85,7 @@ export default function Contact() {
         >
           <Flex gap={4}>
             <Icon as={LuPhone} />
-            <Text>+359 895 614 685</Text>
+            <Text>+359 884 696 912</Text>
           </Flex>
 
           <Flex gap={4}>
@@ -95,7 +95,7 @@ export default function Contact() {
 
           <Flex gap={4}>
             <Icon as={LuMail} />
-            <Text>contact@email.com</Text>
+            <Text>saskamarkov1999@gmail.com</Text>
           </Flex>
         </VStack>
 

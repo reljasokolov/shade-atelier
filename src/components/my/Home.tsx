@@ -24,7 +24,7 @@ export default function Home() {
         >
           <Box
             backdropFilter="blur(18px)"
-            bg="rgba(183, 155, 118, 0.45)"
+            bg="rgba(206, 180, 149, 0.45)"
             border="1px solid"
             borderColor="rgba(255,255,255,0.25)"
             borderRadius="30px"
@@ -43,7 +43,7 @@ export default function Home() {
               Beauty Studio
             </Text>
 
-            <Heading fontSize="26px" textAlign="center" mt={1} color="gold.300">
+            <Heading fontSize="26px" textAlign="center" mt={1} color="gold.700">
               Shade Atelier
             </Heading>
 
@@ -56,7 +56,7 @@ export default function Home() {
                 mt={6}
                 w="full"
                 size="lg"
-                bg="linear-gradient(135deg, #e9cb79, #91751a)"
+                bg="linear-gradient(135deg, #C6AE8A, #d6b999)"
                 color="black"
                 fontWeight="600"
                 letterSpacing="0.5px"

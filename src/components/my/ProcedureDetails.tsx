@@ -167,7 +167,7 @@ export default function ProcedureDetails() {
             mt={5}
             p={3}
             borderRadius="2xl"
-            bg="linear-gradient(135deg, #f1e2c6, #d4b06a)"
+            bg="linear-gradient(135deg,  #e6cfad, #d6b999)"
             boxShadow="0 10px 30px rgba(0,0,0,0.15)"
             maxW="200px"
           >

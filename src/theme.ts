@@ -47,16 +47,16 @@ export const theme = {
 
       /* 💎 LUXURY GOLD */
       gold: {
-        50: { value: "#fbf9f4" },
-        100: { value: "#f2eadc" },
-        200: { value: "#e6d7b8" },
-        300: { value: "#d9c293" },
-        400: { value: "#c9aa6d" },
-        500: { value: "#b89652" }, // 🔥 main
-        600: { value: "#9e7d3f" },
-        700: { value: "#7f632f" },
-        800: { value: "#5f4a22" },
-        900: { value: "#3f3216" },
+        50:  { value: "#F5F1EB" }, // ivory light        
+        100: { value: "#E7DCCF" }, // base (sa slike)
+        200: { value: "#D8C3A5" }, // sand       
+      300: { value: "#C6AE8A" }, // warm beige
+        400: { value: "#BFA58A" }, // coffee milk
+        500: { value: "#B08A4A" }, // 🔥 main (soft gold, ne prežuto)
+        600: { value: "#9A763F" }, // deeper gold
+        700: { value: "#7A5E33" }, // taupe brown
+        800: { value: "#5B4726" }, // dark taupe
+        900: { value: "#3E2F19" }, // espresso
       },
     },
 

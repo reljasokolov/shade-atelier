@@ -99,22 +99,22 @@ export default function NavBar() {
           <HStack gap="8" fontSize="sm">
             <HStack>
               <Icon as={LuPhone} boxSize="14px" />
-              <Text fontWeight="500">+381 00 000 000</Text>
+              <Text fontWeight="500">+359 884 696 912</Text>
             </HStack>
 
             <HStack>
               <Icon as={LuMail} boxSize="14px" />
-              <Text fontWeight="500">studio@email.com</Text>
+              <Text fontWeight="500">saskamarkov1999@gmail.com</Text>
             </HStack>
 
             <HStack>
               <Icon as={LuMapPin} boxSize="14px" />
-              <Text fontWeight="500">Belgrade</Text>
+              <Text fontWeight="500">Sofia</Text>
             </HStack>
 
             <HStack>
               <Icon as={LuClock} boxSize="14px" />
-              <Text fontWeight="500">Mon-Sat 09-18</Text>
+              <Text fontWeight="500">Mon-Sun 09-20</Text>
             </HStack>
           </HStack>
         </Flex>
@@ -205,11 +205,11 @@ export default function NavBar() {
             px={{ base: 4, md: 7 }}
             py={6}
             borderRadius="full"
-            bg="gold.400"
+            bg="linear-gradient(135deg,  #eac48c, #d6b999)"
             color="black"
             fontWeight="600"
             _hover={{
-              bg: "gold.500",
+              bg: "linear-gradient(135deg,  #e6cfad, #d2a371)",
               transform: "translateY(-2px)",
             }}
           >
