@@ -2,6 +2,7 @@ import { Box, Flex, Heading, Text, Button } from "@chakra-ui/react";
 import { RiArrowRightLine } from "react-icons/ri";
 import banner from "../../assets/banner.jpg";
 import BookingModal from "./BookingModal";
+
 export default function Home() {
   return (
     <Box w="100vw" position="relative" left="50%" transform="translateX(-50%)">
@@ -18,6 +19,7 @@ export default function Home() {
           position="relative"
           h="100%"
           align="center"
+          justify={{ base: "center", md: "flex-start" }}
           px={{ base: 6, md: 16 }}
         >
           <Box
@@ -26,8 +28,9 @@ export default function Home() {
             border="1px solid"
             borderColor="rgba(255,255,255,0.25)"
             borderRadius="30px"
-            p={10}
+            p={{ base: 6, md: 10 }}
             maxW="420px"
+            w="100%"
             color="white"
             boxShadow="0 20px 60px rgba(0,0,0,0.35)"
           >

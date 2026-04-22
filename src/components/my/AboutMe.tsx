@@ -26,7 +26,6 @@ export default function AboutMe() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        {/* IMAGE */}
         <MotionBox
           position="relative"
           initial={{ opacity: 0, x: -60 }}
@@ -44,7 +43,6 @@ export default function AboutMe() {
             _hover={{ transform: "scale(1.03)" }}
           />
 
-          {/* frame */}
           <Box
             position="absolute"
             top="20px"
@@ -58,7 +56,6 @@ export default function AboutMe() {
           />
         </MotionBox>
 
-        {/* TEXT */}
         <MotionBox
           flex="1"
           initial={{ opacity: 0, x: 60 }}
@@ -106,7 +103,6 @@ export default function AboutMe() {
 
             <Text color="gray.600">София + мобилни услуги за събития.</Text>
 
-            {/* BUTTONS */}
             <Flex gap={4} pt={4}>
               <Button
                 bg="#1f2a37"

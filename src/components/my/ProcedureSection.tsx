@@ -35,7 +35,6 @@ export default function ProcedureSection() {
 
   return (
     <Box maxW="1400px" mx="auto" py={20} px={6} id="services">
-      {/* TITLE */}
       <MotionBox
         mb={16}
         initial={{ opacity: 0, y: 40 }}
@@ -62,9 +61,7 @@ export default function ProcedureSection() {
         />
       </MotionBox>
 
-      {/* SLIDER WRAPPER */}
       <Box position="relative">
-        {/* LEFT ARROW */}
         <IconButton
           position="absolute"
           left="-20px"
@@ -84,7 +81,6 @@ export default function ProcedureSection() {
           <ChevronLeft />
         </IconButton>
 
-        {/* RIGHT ARROW */}
         <IconButton
           position="absolute"
           right="-20px"
@@ -104,11 +100,8 @@ export default function ProcedureSection() {
           <ChevronRight />
         </IconButton>
 
-        {/* SWIPER */}
         <Swiper
-          modules={[Pagination]}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
-          pagination={{ clickable: true }}
           spaceBetween={30}
           slidesPerView={1}
           breakpoints={{
@@ -128,7 +121,6 @@ export default function ProcedureSection() {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
               >
-                {/* TITLE */}
                 <Text
                   fontSize="18px"
                   fontWeight="500"
@@ -140,7 +132,6 @@ export default function ProcedureSection() {
                   {proc.title}
                 </Text>
 
-                {/* IMAGE */}
                 <MotionBox
                   borderRadius="full"
                   overflow="hidden"
@@ -152,7 +143,6 @@ export default function ProcedureSection() {
                   <Image src={proc.img} w="100%" h="100%" objectFit="cover" />
                 </MotionBox>
 
-                {/* LINE */}
                 <MotionBox
                   h="2px"
                   bg="gold.500"
@@ -162,7 +152,6 @@ export default function ProcedureSection() {
                   transition={{ duration: 0.4 }}
                 />
 
-                {/* PRICE */}
                 <Box textAlign="center" mt={4}>
                   <Text fontSize="lg" color="gold.500">
                     Цена
@@ -172,7 +161,6 @@ export default function ProcedureSection() {
                   </Text>
                 </Box>
 
-                {/* BUTTON */}
                 <Button
                   size="sm"
                   variant="plain"

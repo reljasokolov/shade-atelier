@@ -1,25 +1,36 @@
-import { Box, Flex, HStack, Text, Button, Icon } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  HStack,
+  Text,
+  Button,
+  Icon,
+  Drawer,
+  Portal,
+  CloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { LuPhone, LuMail, LuMapPin, LuClock } from "react-icons/lu";
+import { LuPhone, LuMail, LuMapPin, LuClock, LuMenu } from "react-icons/lu";
 import BookingModal from "./BookingModal";
 
 export default function NavBar() {
-  const navigate = useNavigate(); // za navigaciju
+  const navigate = useNavigate();
+  const { open, onOpen, onClose } = useDisclosure();
 
   const smoothScrollTo = (targetId: string, duration = 1600) => {
-    // funkcija za skrolovanje do elementa, 1.6s
-    const target = document.getElementById(targetId); // pronalazenje elementa
+    const target = document.getElementById(targetId);
     if (!target) return;
 
-    const start = window.pageYOffset; // trenutna
-    const end = target.getBoundingClientRect().top + window.pageYOffset; // gde se nalazi element
-    const distance = end - start; // koliko da skroluje
+    const start = window.pageYOffset;
+    const end = target.getBoundingClientRect().top + window.pageYOffset;
+    const distance = end - start;
 
-    let startTime: number; // vreme pocetka animacije
+    let startTime: number;
 
     const easeInOutCubic = (t: number) => {
       return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }; // brzina animacije (smooth)
+    };
 
     const animation = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
@@ -59,7 +70,19 @@ export default function NavBar() {
       _after: { width: "100%" },
     },
   };
+  const mobileNavItem = {
+    fontSize: "lg",
+    fontWeight: "500",
+    py: 3,
+    px: 2,
+    borderRadius: "8px",
+    transition: "all 0.25s ease",
+    _hover: {
+      bg: "gold.200",
 
+      transform: "translateX(6px)",
+    },
+  };
   return (
     <Box
       position="sticky"
@@ -70,6 +93,7 @@ export default function NavBar() {
       borderBottom="1px solid"
       borderColor="blackAlpha.100"
     >
+      {/* TOP BAR (desktop only) */}
       <Box display={{ base: "none", md: "block" }}>
         <Flex bg="gold.200" px="8" py="2" justify="center">
           <HStack gap="8" fontSize="sm">
@@ -96,18 +120,26 @@ export default function NavBar() {
         </Flex>
       </Box>
 
-      <Flex px={{ base: 4, md: 8 }} py="4" align="center" bg="gold.300">
+      {/* MAIN NAV */}
+      <Flex
+        px={{ base: 4, md: 8 }}
+        py="4"
+        align="center"
+        justify="space-between"
+        bg="gold.300"
+      >
+        {" "}
+        {/* LOGO */}
         <Text
           fontFamily="'Cormorant Garamond', serif"
           fontSize={{ base: "lg", md: "2xl" }}
           fontWeight="600"
-          letterSpacing="0.5px"
           cursor="pointer"
           onClick={() => navigate("/")}
         >
           Shade Atelier
         </Text>
-
+        {/* DESKTOP MENU */}
         <Box display={{ base: "none", md: "block" }}>
           <HStack ml="14" gap="10">
             <Text {...navItemStyle} onClick={() => navigate("/")}>
@@ -119,27 +151,29 @@ export default function NavBar() {
               onClick={() => {
                 if (window.location.pathname !== "/") {
                   navigate("/");
-                  setTimeout(() => smoothScrollTo("services", 1000), 100);
+                  setTimeout(() => smoothScrollTo("services"), 100);
                 } else {
-                  smoothScrollTo("services", 1800);
+                  smoothScrollTo("services");
                 }
               }}
             >
               Services
             </Text>
+
             <Text
               {...navItemStyle}
               onClick={() => {
                 if (window.location.pathname !== "/") {
                   navigate("/");
-                  setTimeout(() => smoothScrollTo("about", 2000), 100);
+                  setTimeout(() => smoothScrollTo("about"), 100);
                 } else {
-                  smoothScrollTo("about", 1800);
+                  smoothScrollTo("about");
                 }
               }}
             >
               About me
             </Text>
+
             <BookingModal>
               <Text {...navItemStyle}>Shop</Text>
             </BookingModal>
@@ -149,9 +183,9 @@ export default function NavBar() {
               onClick={() => {
                 if (window.location.pathname !== "/") {
                   navigate("/");
-                  setTimeout(() => smoothScrollTo("contact", 1800), 100);
+                  setTimeout(() => smoothScrollTo("contact"), 100);
                 } else {
-                  smoothScrollTo("contact", 1800);
+                  smoothScrollTo("contact");
                 }
               }}
             >
@@ -159,40 +193,120 @@ export default function NavBar() {
             </Text>
           </HStack>
         </Box>
-
         <Box flex="1" />
-
-        <Box display={{ base: "flex", md: "none" }}>
-          <HStack gap={2}>
-            <Icon as={LuMail} boxSize="16px" />
-            <Text fontSize="sm">studio@email.com</Text>
-          </HStack>
-        </Box>
-
+        <Flex display={{ base: "flex", md: "none" }} align="center" gap={4}>
+          <Box onClick={onOpen} cursor="pointer">
+            <Icon as={LuMenu} boxSize="26px" />
+          </Box>
+        </Flex>
         <BookingModal>
           <Button
             ml={{ base: 2, md: 0 }}
-            px={{ base: 5, md: 7 }}
+            px={{ base: 4, md: 7 }}
             py={6}
             borderRadius="full"
             bg="gold.400"
             color="black"
             fontWeight="600"
-            letterSpacing="0.5px"
-            transition="all 0.25s ease"
             _hover={{
               bg: "gold.500",
               transform: "translateY(-2px)",
-              boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-            }}
-            _active={{
-              transform: "scale(0.96)",
             }}
           >
             Book Now
           </Button>
         </BookingModal>
       </Flex>
+
+      <Drawer.Root open={open} onOpenChange={(e) => !e.open && onClose()}>
+        <Portal>
+          <Drawer.Backdrop bg="blackAlpha.600" backdropFilter="blur(6px)" />
+          <Drawer.Positioner>
+            <Drawer.Content bg="linear-gradient(180deg, #f5efe6, #e8d8b5)">
+              <Drawer.Header
+                borderBottom="1px solid"
+                borderColor="blackAlpha.200"
+              >
+                <Text
+                  fontFamily="'Cormorant Garamond', serif"
+                  fontSize="2xl"
+                  fontWeight="600"
+                >
+                  Shade Atelier
+                </Text>
+              </Drawer.Header>
+
+              <Drawer.Body>
+                <Flex direction="column" gap={6} mt={6}>
+                  <Text
+                    {...mobileNavItem}
+                    onClick={() => {
+                      navigate("/");
+                      onClose();
+                    }}
+                  >
+                    Home
+                  </Text>
+
+                  <Text
+                    {...mobileNavItem}
+                    onClick={() => {
+                      onClose();
+                      if (window.location.pathname !== "/") {
+                        navigate("/");
+                        setTimeout(() => smoothScrollTo("services"), 100);
+                      } else {
+                        smoothScrollTo("services");
+                      }
+                    }}
+                  >
+                    Services
+                  </Text>
+
+                  <Text
+                    {...mobileNavItem}
+                    onClick={() => {
+                      onClose();
+                      if (window.location.pathname !== "/") {
+                        navigate("/");
+                        setTimeout(() => smoothScrollTo("about"), 100);
+                      } else {
+                        smoothScrollTo("about");
+                      }
+                    }}
+                  >
+                    About me
+                  </Text>
+
+                  <Text
+                    {...mobileNavItem}
+                    onClick={() => {
+                      onClose();
+                      if (window.location.pathname !== "/") {
+                        navigate("/");
+                        setTimeout(() => smoothScrollTo("contact"), 100);
+                      } else {
+                        smoothScrollTo("contact");
+                      }
+                    }}
+                  >
+                    Contact
+                  </Text>
+                </Flex>
+              </Drawer.Body>
+              <Drawer.CloseTrigger asChild>
+                <CloseButton
+                  size="lg"
+                  position="absolute"
+                  top="4"
+                  right="4"
+                  _hover={{ bg: "blackAlpha.200" }}
+                />
+              </Drawer.CloseTrigger>
+            </Drawer.Content>
+          </Drawer.Positioner>
+        </Portal>
+      </Drawer.Root>
     </Box>
   );
 }
