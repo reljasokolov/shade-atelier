@@ -3,7 +3,6 @@
 import { Box, Text, Image, Button, VStack, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
