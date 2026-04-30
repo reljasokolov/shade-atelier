@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   Flex,
@@ -12,35 +14,61 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { LuPhone, LuMail, LuMapPin, LuClock, LuMenu } from "react-icons/lu";
+import { useEffect, useState } from "react";
 import BookingModal from "./BookingModal";
 
 export default function NavBar() {
   const navigate = useNavigate();
   const { open, onOpen, onClose } = useDisclosure();
 
-  const smoothScrollTo = (targetId: string, duration = 1600) => {
-    const target = document.getElementById(targetId);
-    if (!target) return;
+  const [scrolled, setScrolled] = useState(false);
 
-    const start = window.pageYOffset;
-    const end = target.getBoundingClientRect().top + window.pageYOffset;
-    const distance = end - start;
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+
+    if (!el) return;
+
+    const navbar = document.querySelector("header");
+
+    const navbarHeight = navbar ? navbar.clientHeight : 100;
+
+    const offset = 10;
+
+    const targetY =
+      el.getBoundingClientRect().top +
+      window.pageYOffset -
+      navbarHeight -
+      offset;
+
+    const startY = window.pageYOffset;
+
+    const distance = targetY - startY;
+
+    const duration = 1000;
 
     let startTime: number;
 
-    const easeInOutCubic = (t: number) => {
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    };
+    const ease = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
     const animation = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
 
-      const eased = easeInOutCubic(progress);
-      window.scrollTo(0, start + distance * eased);
+      const time = currentTime - startTime;
 
-      if (timeElapsed < duration) {
+      const progress = Math.min(time / duration, 1);
+
+      const eased = ease(progress);
+
+      window.scrollTo(0, startY + distance * eased);
+
+      if (time < duration) {
         requestAnimationFrame(animation);
       }
     };
@@ -48,12 +76,30 @@ export default function NavBar() {
     requestAnimationFrame(animation);
   };
 
+  const goToSection = (id: string) => {
+    if (window.location.pathname !== "/") {
+      navigate("/");
+
+      const interval = setInterval(() => {
+        const el = document.getElementById(id);
+
+        if (el) {
+          scrollToSection(id);
+
+          clearInterval(interval);
+        }
+      }, 50);
+    } else {
+      scrollToSection(id);
+    }
+  };
+
   const navItemStyle = {
     cursor: "pointer",
     fontFamily: "'Cormorant Garamond', serif",
     fontWeight: "600",
     position: "relative",
-    transition: "all 0.3s ease",
+    transition: "all 0.45s cubic-bezier(0.25, 1, 0.5, 1)",
     _after: {
       content: '""',
       position: "absolute",
@@ -62,7 +108,7 @@ export default function NavBar() {
       bottom: "-4px",
       left: 0,
       bg: "gold.500",
-      transition: "width 0.3s ease",
+      transition: "width 0.4s cubic-bezier(0.25, 1, 0.5, 1)",
     },
     _hover: {
       color: "gold.600",
@@ -70,147 +116,121 @@ export default function NavBar() {
       _after: { width: "100%" },
     },
   };
+
   const mobileNavItem = {
     fontSize: "lg",
     fontWeight: "500",
     py: 3,
-    px: 2,
-    borderRadius: "8px",
+    px: 3,
+    borderRadius: "10px",
     transition: "all 0.25s ease",
+    _active: {
+      bg: "gold.300",
+      transform: "scale(0.97)",
+    },
     _hover: {
       bg: "gold.200",
-
-      transform: "translateX(6px)",
     },
   };
+
   return (
     <Box
       position="sticky"
       top="0"
       zIndex="1000"
-      bg="rgba(255,255,255,0.7)"
-      backdropFilter="blur(14px)"
+      transition="all 0.6s cubic-bezier(0.25, 1, 0.5, 1)"
+      bg={scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.55)"}
+      backdropFilter={scrolled ? "blur(0px)" : "blur(16px)"}
+      boxShadow={scrolled ? "0 15px 40px rgba(0,0,0,0.08)" : "none"}
       borderBottom="1px solid"
-      borderColor="blackAlpha.100"
+      borderColor={scrolled ? "blackAlpha.200" : "transparent"}
     >
-      {/* TOP BAR (desktop only) */}
-      <Box display={{ base: "none", md: "block" }}>
+      {/* TOP BAR */}
+      <Box
+        display={{ base: "none", md: "block" }}
+        opacity={scrolled ? 0 : 1}
+        transform={scrolled ? "translateY(-100%)" : "translateY(0)"}
+        transition="all 0.5s ease"
+      >
         <Flex bg="gold.200" px="8" py="2" justify="center">
           <HStack gap="8" fontSize="sm">
             <HStack>
               <Icon as={LuPhone} boxSize="14px" />
-              <Text fontWeight="500">+359 884 696 912</Text>
+              <Text>+359 884 696 912</Text>
             </HStack>
 
             <HStack>
               <Icon as={LuMail} boxSize="14px" />
-              <Text fontWeight="500">saskamarkov1999@gmail.com</Text>
+              <Text>studio@email.com</Text>
             </HStack>
 
             <HStack>
               <Icon as={LuMapPin} boxSize="14px" />
-              <Text fontWeight="500">Sofia</Text>
+              <Text>Sofia</Text>
             </HStack>
 
             <HStack>
               <Icon as={LuClock} boxSize="14px" />
-              <Text fontWeight="500">Mon-Sun 09-20</Text>
+              <Text>Mon-Sun 09-20</Text>
             </HStack>
           </HStack>
         </Flex>
       </Box>
 
       {/* MAIN NAV */}
-      <Flex
-        px={{ base: 4, md: 8 }}
-        py="4"
-        align="center"
-        justify="space-between"
-        bg="gold.300"
-      >
-        {" "}
-        {/* LOGO */}
+      <Flex px={{ base: 4, md: 8 }} py={scrolled ? "3" : "5"} align="center">
         <Text
           fontFamily="'Cormorant Garamond', serif"
-          fontSize={{ base: "lg", md: "2xl" }}
+          fontSize={scrolled ? "lg" : "2xl"}
           fontWeight="600"
           cursor="pointer"
+          transition="all 0.4s ease"
           onClick={() => navigate("/")}
         >
           Shade Atelier
         </Text>
-        {/* DESKTOP MENU */}
+
         <Box display={{ base: "none", md: "block" }}>
           <HStack ml="14" gap="10">
             <Text {...navItemStyle} onClick={() => navigate("/")}>
               Home
             </Text>
 
-            <Text
-              {...navItemStyle}
-              onClick={() => {
-                if (window.location.pathname !== "/") {
-                  navigate("/");
-                  setTimeout(() => smoothScrollTo("services"), 100);
-                } else {
-                  smoothScrollTo("services");
-                }
-              }}
-            >
+            <Text {...navItemStyle} onClick={() => goToSection("services")}>
               Services
             </Text>
 
-            <Text
-              {...navItemStyle}
-              onClick={() => {
-                if (window.location.pathname !== "/") {
-                  navigate("/");
-                  setTimeout(() => smoothScrollTo("about"), 100);
-                } else {
-                  smoothScrollTo("about");
-                }
-              }}
-            >
+            <Text {...navItemStyle} onClick={() => goToSection("about")}>
               About me
             </Text>
 
-            <BookingModal>
-              <Text {...navItemStyle}>Shop</Text>
-            </BookingModal>
-
-            <Text
-              {...navItemStyle}
-              onClick={() => {
-                if (window.location.pathname !== "/") {
-                  navigate("/");
-                  setTimeout(() => smoothScrollTo("contact"), 100);
-                } else {
-                  smoothScrollTo("contact");
-                }
-              }}
-            >
+            <Text {...navItemStyle} onClick={() => goToSection("contact")}>
               Contact
             </Text>
           </HStack>
         </Box>
+
         <Box flex="1" />
-        <Flex display={{ base: "flex", md: "none" }} align="center" gap={4}>
-          <Box onClick={onOpen} cursor="pointer">
-            <Icon as={LuMenu} boxSize="26px" />
-          </Box>
-        </Flex>
+
+        {/* MOBILE */}
+        <Box display={{ base: "flex", md: "none" }} onClick={onOpen}>
+          <Icon as={LuMenu} boxSize="26px" cursor="pointer" />
+        </Box>
+
+        {/* CTA */}
         <BookingModal>
           <Button
             ml={{ base: 2, md: 0 }}
             px={{ base: 4, md: 7 }}
-            py={6}
+            py={scrolled ? 5 : 6}
             borderRadius="full"
-            bg="linear-gradient(135deg,  #eac48c, #d6b999)"
+            bg="linear-gradient(135deg,#eac48c,#d6b999)"
             color="black"
             fontWeight="600"
+            transition="all 0.45s cubic-bezier(0.25, 1, 0.5, 1)"
             _hover={{
-              bg: "linear-gradient(135deg,  #e6cfad, #d2a371)",
               transform: "translateY(-2px)",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
             }}
           >
             Book Now
@@ -221,17 +241,11 @@ export default function NavBar() {
       <Drawer.Root open={open} onOpenChange={(e) => !e.open && onClose()}>
         <Portal>
           <Drawer.Backdrop bg="blackAlpha.600" backdropFilter="blur(6px)" />
+
           <Drawer.Positioner>
-            <Drawer.Content bg="linear-gradient(180deg, #f5efe6, #e8d8b5)">
-              <Drawer.Header
-                borderBottom="1px solid"
-                borderColor="blackAlpha.200"
-              >
-                <Text
-                  fontFamily="'Cormorant Garamond', serif"
-                  fontSize="2xl"
-                  fontWeight="600"
-                >
+            <Drawer.Content bg="linear-gradient(180deg,#f5efe6,#e8d8b5)">
+              <Drawer.Header>
+                <Text fontSize="2xl" fontWeight="600">
                   Shade Atelier
                 </Text>
               </Drawer.Header>
@@ -252,12 +266,7 @@ export default function NavBar() {
                     {...mobileNavItem}
                     onClick={() => {
                       onClose();
-                      if (window.location.pathname !== "/") {
-                        navigate("/");
-                        setTimeout(() => smoothScrollTo("services"), 100);
-                      } else {
-                        smoothScrollTo("services");
-                      }
+                      setTimeout(() => goToSection("services"), 300);
                     }}
                   >
                     Services
@@ -267,12 +276,7 @@ export default function NavBar() {
                     {...mobileNavItem}
                     onClick={() => {
                       onClose();
-                      if (window.location.pathname !== "/") {
-                        navigate("/");
-                        setTimeout(() => smoothScrollTo("about"), 100);
-                      } else {
-                        smoothScrollTo("about");
-                      }
+                      setTimeout(() => goToSection("about"), 300);
                     }}
                   >
                     About me
@@ -282,26 +286,16 @@ export default function NavBar() {
                     {...mobileNavItem}
                     onClick={() => {
                       onClose();
-                      if (window.location.pathname !== "/") {
-                        navigate("/");
-                        setTimeout(() => smoothScrollTo("contact"), 100);
-                      } else {
-                        smoothScrollTo("contact");
-                      }
+                      setTimeout(() => goToSection("contact"), 300);
                     }}
                   >
                     Contact
                   </Text>
                 </Flex>
               </Drawer.Body>
+
               <Drawer.CloseTrigger asChild>
-                <CloseButton
-                  size="lg"
-                  position="absolute"
-                  top="4"
-                  right="4"
-                  _hover={{ bg: "blackAlpha.200" }}
-                />
+                <CloseButton position="absolute" top="4" right="4" />
               </Drawer.CloseTrigger>
             </Drawer.Content>
           </Drawer.Positioner>

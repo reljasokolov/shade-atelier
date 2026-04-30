@@ -11,7 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <Box bg="gold.100" overflowX="hidden" minH="100vh">
+      <Box bg="gold.100" minH="100vh">
         <NavBar />
 
         <Routes>

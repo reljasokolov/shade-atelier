@@ -68,7 +68,6 @@ export default function ProcedureDetails() {
   return (
     <Box maxW="1200px" mx="auto" py={20} px={4}>
       <Flex gap={{ base: 4, md: 10 }} align="start" direction="row">
-        {/* SIDEBAR */}
         <VStack
           w={{ base: "140px", md: "260px" }}
           align="stretch"

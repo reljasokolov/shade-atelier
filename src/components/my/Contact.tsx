@@ -29,7 +29,13 @@ export default function Contact() {
   const { ref: rightRef } = useInView();
 
   return (
-    <Box bg="gold.100" minH="100vh" px={{ base: 4, md: 10 }} py={20}>
+    <Box
+      id="contact"
+      bg="gold.100"
+      minH="100vh"
+      px={{ base: 4, md: 10 }}
+      py={20}
+    >
       <VStack
         ref={titleRef}
         textAlign="center"

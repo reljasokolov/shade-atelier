@@ -5,9 +5,9 @@ import BookingModal from "./BookingModal";
 
 export default function Home() {
   return (
-    <Box w="100vw" position="relative" left="50%" transform="translateX(-50%)">
+    <Box w="100%">
       <Box
-        h={{ base: "500px", md: "650px" }}
+        h={{ base: "500px", md: "600px" }}
         backgroundImage={`url(${banner})`}
         backgroundSize="cover"
         backgroundPosition="center"
