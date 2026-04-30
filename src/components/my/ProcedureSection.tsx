@@ -9,7 +9,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
-import "swiper/css/pagination";
 
 import night from "../../assets/night.png";
 import weding from "../../assets/weding.png";
@@ -23,7 +22,7 @@ const MotionVStack = motion(VStack);
 const procedures = [
   { id: "night", title: "Вечерен грим", price: "50€", img: night },
   { id: "weding", title: "Сватбен грим", price: "60€", img: weding },
-  { id: "everyday", title: "Eжедневен грим", price: "40€", img: everyday },
+  { id: "everyday", title: "Ежедневен грим", price: "40€", img: everyday },
   { id: "prom", title: "Абитуриентски грим", price: "60€", img: prom },
   { id: "tentative", title: "Пробен грим", price: "50€", img: tentative },
 ];
@@ -34,6 +33,7 @@ export default function ProcedureSection() {
 
   return (
     <Box maxW="1400px" mx="auto" py={20} px={6} id="services">
+      {/* TITLE */}
       <MotionBox
         mb={16}
         initial={{ opacity: 0, y: 40 }}
@@ -61,7 +61,9 @@ export default function ProcedureSection() {
       </MotionBox>
 
       <Box position="relative">
+        {/* LEFT */}
         <IconButton
+          aria-label="prev"
           position="absolute"
           left="-20px"
           top="50%"
@@ -80,7 +82,9 @@ export default function ProcedureSection() {
           <ChevronLeft />
         </IconButton>
 
+        {/* RIGHT */}
         <IconButton
+          aria-label="next"
           position="absolute"
           right="-20px"
           top="50%"
@@ -103,6 +107,10 @@ export default function ProcedureSection() {
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           spaceBetween={30}
           slidesPerView={1}
+          /* 🔥 OVO JE KLJUČ */
+          allowTouchMove={false}
+          simulateTouch={false}
+          touchStartPreventDefault={true}
           breakpoints={{
             640: { slidesPerView: 2 },
             900: { slidesPerView: 3 },
@@ -155,6 +163,7 @@ export default function ProcedureSection() {
                   <Text fontSize="lg" color="gold.500">
                     Цена
                   </Text>
+
                   <Text fontSize="2xl" fontWeight="600">
                     {proc.price}
                   </Text>
