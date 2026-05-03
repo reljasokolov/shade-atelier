@@ -71,14 +71,12 @@ export default function Contact() {
         </Flex>
       </VStack>
 
-      {/* CONTACT */}
       <Flex
         maxW="1200px"
         mx="auto"
         gap={10}
         direction={{ base: "column", md: "row" }}
       >
-        {/* LEFT */}
         <VStack
           ref={leftRef}
           align="start"
@@ -105,7 +103,6 @@ export default function Contact() {
           </Flex>
         </VStack>
 
-        {/* FORM */}
         <VStack
           ref={rightRef}
           flex="1"

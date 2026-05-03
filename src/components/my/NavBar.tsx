@@ -139,13 +139,12 @@ export default function NavBar() {
       top="0"
       zIndex="1000"
       transition="all 0.6s cubic-bezier(0.25, 1, 0.5, 1)"
-      bg={scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.55)"}
+      bg={scrolled ? "rgba(225, 215, 173, 0.98)" : "rgba(198, 191, 156, 0.55)"}
       backdropFilter={scrolled ? "blur(0px)" : "blur(16px)"}
       boxShadow={scrolled ? "0 15px 40px rgba(0,0,0,0.08)" : "none"}
       borderBottom="1px solid"
       borderColor={scrolled ? "blackAlpha.200" : "transparent"}
     >
-      {/* TOP BAR */}
       <Box
         display={{ base: "none", md: "block" }}
         opacity={scrolled ? 0 : 1}
@@ -177,7 +176,6 @@ export default function NavBar() {
         </Flex>
       </Box>
 
-      {/* MAIN NAV */}
       <Flex px={{ base: 4, md: 8 }} py={scrolled ? "3" : "5"} align="center">
         <Text
           fontFamily="'Cormorant Garamond', serif"
@@ -212,12 +210,10 @@ export default function NavBar() {
 
         <Box flex="1" />
 
-        {/* MOBILE */}
         <Box display={{ base: "flex", md: "none" }} onClick={onOpen}>
           <Icon as={LuMenu} boxSize="26px" cursor="pointer" />
         </Box>
 
-        {/* CTA */}
         <BookingModal>
           <Button
             ml={{ base: 2, md: 0 }}

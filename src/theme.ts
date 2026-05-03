@@ -45,7 +45,6 @@ export const theme = {
         900: { value: "#661c2b" },
       },
 
-      /* 💎 LUXURY GOLD */
       gold: {
         50:  { value: "#F5F1EB" }, // ivory light        
         100: { value: "#E7DCCF" }, // base (sa slike)
