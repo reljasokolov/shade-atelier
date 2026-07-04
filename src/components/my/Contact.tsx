@@ -94,7 +94,9 @@ export default function Contact() {
 
           <Flex gap={4}>
             <Icon as={LuMapPin} />
-            <Text>Sofia, Bulgaria</Text>
+            <Text>
+              ж.к. Овча купел 1, ул. "Василий Верешчагин" 521, 1632 София
+            </Text>
           </Flex>
 
           <Flex gap={4}>

@@ -187,25 +187,25 @@ export default function NavBar() {
           transition="all 0.4s ease"
           onClick={() => navigate("/")}
         >
-          Shade Atelier
+          Shadé Atelier
         </Text>
 
         <Box display={{ base: "none", md: "block" }}>
           <HStack ml="14" gap="10">
             <Text {...navItemStyle} onClick={() => navigate("/")}>
-              Home
+              Начало
             </Text>
 
             <Text {...navItemStyle} onClick={() => goToSection("services")}>
-              Services
+              Услуги
             </Text>
 
             <Text {...navItemStyle} onClick={() => goToSection("about")}>
-              About me
+              За мен
             </Text>
 
             <Text {...navItemStyle} onClick={() => goToSection("contact")}>
-              Contact
+              Контакт
             </Text>
           </HStack>
         </Box>
@@ -231,7 +231,7 @@ export default function NavBar() {
               boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
             }}
           >
-            Book Now
+            Запази час
           </Button>
         </BookingModal>
       </Flex>
@@ -244,7 +244,7 @@ export default function NavBar() {
             <Drawer.Content bg="linear-gradient(180deg,#f5efe6,#e8d8b5)">
               <Drawer.Header>
                 <Text fontSize="2xl" fontWeight="600">
-                  Shade Atelier
+                  Shadé Atelier
                 </Text>
               </Drawer.Header>
 
@@ -257,7 +257,7 @@ export default function NavBar() {
                       onClose();
                     }}
                   >
-                    Home
+                    Начало
                   </Text>
 
                   <Text
@@ -267,7 +267,7 @@ export default function NavBar() {
                       setTimeout(() => goToSection("services"), 300);
                     }}
                   >
-                    Services
+                    Услуги
                   </Text>
 
                   <Text
@@ -277,7 +277,7 @@ export default function NavBar() {
                       setTimeout(() => goToSection("about"), 300);
                     }}
                   >
-                    About me
+                    За мен
                   </Text>
 
                   <Text
@@ -287,7 +287,7 @@ export default function NavBar() {
                       setTimeout(() => goToSection("contact"), 300);
                     }}
                   >
-                    Contact
+                    Контакт
                   </Text>
                 </Flex>
               </Drawer.Body>

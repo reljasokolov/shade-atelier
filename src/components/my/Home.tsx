@@ -44,12 +44,13 @@ export default function Home() {
             </Text>
 
             <Heading fontSize="26px" textAlign="center" mt={1} color="gold.700">
-              Shade Atelier
+              Shadé Atelier
             </Heading>
 
             <Text mt={5} opacity={0.85} fontSize="sm" lineHeight="1.6">
-              NEKI UMETNIČKI TEKST NEKI UMETNIČKI TEKST NEKI UMETNIČKI TEKST
-              NEKI UMETNIČKI TEKST NEKI UMETNIČKI TEKST.
+              Красотата е в детайлите. Всяка визия е създадена с внимание,
+              прецизност и стремеж да подчертае естественото излъчване на всяка
+              клиентка.
             </Text>
             <BookingModal>
               <Button
@@ -65,7 +66,7 @@ export default function Home() {
                   boxShadow: "0 12px 35px rgba(0,0,0,0.4)",
                 }}
               >
-                Book Appointment
+                Запази час
                 <RiArrowRightLine />
               </Button>
             </BookingModal>
