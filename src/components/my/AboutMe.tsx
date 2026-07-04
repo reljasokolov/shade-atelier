@@ -8,6 +8,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import sashka from "../../assets/sashka.jpeg";
+import BookingModal from "./BookingModal";
 
 const MotionBox = motion(Box);
 const MotionFlex = motion(Flex);
@@ -33,7 +35,7 @@ export default function AboutMe() {
           transition={{ duration: 0.8 }}
         >
           <Image
-            src="src/assets/sashka.jpeg"
+            src={sashka}
             borderRadius="20px"
             w={{ base: "100%", md: "400px" }}
             h="500px"
@@ -92,14 +94,22 @@ export default function AboutMe() {
             </Text>
 
             <Heading fontSize="2xl" fontFamily="'Playfair Display', serif">
-              Добре дошла в Shadé Atelier. Запази своя час и нека създадем
-              визия, която няма да остане незабелязана.
+              Добре дошла в Shadé Atelier.
+            </Heading>
+            <Heading fontSize="2xl" fontFamily="'Playfair Display', serif">
+              Запази своя час и нека създадем визия, която няма да остане
+              незабелязана.
             </Heading>
             <Flex gap={4} pt={4}>
               <Button
                 bg="#1f2a37"
                 color="white"
                 borderRadius="full"
+                onClick={() => {
+                  document.getElementById("contact-form")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
                 _hover={{
                   bg: "#111827",
                   transform: "translateY(-2px)",
@@ -108,17 +118,19 @@ export default function AboutMe() {
                 Свържи се
               </Button>
 
-              <Button
-                bg="gold.400"
-                color="black"
-                borderRadius="full"
-                _hover={{
-                  transform: "translateY(-2px)",
-                  boxShadow: "lg",
-                }}
-              >
-                Запази час
-              </Button>
+              <BookingModal>
+                <Button
+                  bg="#C8BBA5"
+                  color="black"
+                  borderRadius="full"
+                  _hover={{
+                    transform: "translateY(-2px)",
+                    boxShadow: "lg",
+                  }}
+                >
+                  Запази час
+                </Button>
+              </BookingModal>
             </Flex>
           </VStack>
         </MotionBox>

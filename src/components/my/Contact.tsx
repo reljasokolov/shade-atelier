@@ -15,18 +15,48 @@ import {
 
 import { useInView } from "./useInView";
 import { LuPhone, LuMail, LuMapPin } from "react-icons/lu";
-import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaFacebookF, FaInstagram /*FaTiktok*/ } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
+import { /*useRef,*/ useState } from "react";
 
 const socials = [
-  { icon: FaFacebookF, url: "https://facebook.com/TVOJ_PROFIL" },
-  { icon: FaInstagram, url: "https://instagram.com/TVOJ_PROFIL" },
-  { icon: FaTiktok, url: "https://tiktok.com/@TVOJ_PROFIL" },
+  { icon: FaFacebookF, url: "https://www.facebook.com/grimsofiamakeup" },
+  { icon: FaInstagram, url: "https://www.instagram.com/shadeaatelier/" },
+  //{ icon: FaTiktok, url: "https://tiktok.com/@TVOJ_PROFIL" },
 ];
 
 export default function Contact() {
   const { ref: titleRef, isVisible: titleVisible } = useInView();
   const { ref: leftRef } = useInView();
   const { ref: rightRef } = useInView();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const sendEmail = async () => {
+    try {
+      await emailjs.send(
+        "service_0poznid",
+        "template_45t3gu6",
+        {
+          name,
+          email,
+          message,
+        },
+        "835vvNgVkMjhq01Je",
+      );
+
+      alert("Съобщението беше изпратено успешно!");
+
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (error) {
+      console.error(error);
+      alert("Възникна грешка при изпращането.");
+    }
+  };
 
   return (
     <Box
@@ -106,6 +136,7 @@ export default function Contact() {
         </VStack>
 
         <VStack
+          id="contact-form"
           ref={rightRef}
           flex="1"
           bg="whiteAlpha.700"
@@ -113,14 +144,29 @@ export default function Contact() {
           borderRadius="20px"
           boxShadow="lg"
           gap={5}
+          scrollMarginTop="100px"
         >
           <Heading fontSize="2xl">Изпрати съобщение</Heading>
 
-          <Input placeholder="Вашето име" />
-          <Input placeholder="Email" />
-          <Textarea placeholder="Съобщение..." />
+          <Input
+            placeholder="Вашето име"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            placeholder="Вашият еmail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Textarea
+            placeholder="Съобщение..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
 
-          <Button bg="gold.400">Изпрати</Button>
+          <Button bg="#C8BBA5" onClick={sendEmail}>
+            Изпрати
+          </Button>
         </VStack>
       </Flex>
     </Box>
