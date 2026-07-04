@@ -1,17 +1,11 @@
 "use client";
 
-import {
-  Box,
-  Text,
-  Image,
-  Button,
-  VStack /*IconButton*/,
-} from "@chakra-ui/react";
+import { Box, Text, Image, Button, VStack, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-//import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
@@ -68,55 +62,60 @@ export default function ProcedureSection() {
 
       <Box position="relative">
         {/* LEFT */}
-        {/* <IconButton
-          aria-label="prev"
-          position="absolute"
-          left="-20px"
-          top="50%"
-          transform="translateY(-50%)"
-          zIndex={2}
-          borderRadius="full"
-          bg="white"
-          color="gold.500"
-          boxShadow="lg"
-          _hover={{
-            bg: "gold.500",
-            color: "white",
-          }}
-          onClick={() => swiperRef.current?.slidePrev()}
-        >
-          <ChevronLeft />
-        </IconButton> */}
+        {
+          <IconButton
+            aria-label="prev"
+            display={{ base: "flex", lg: "none" }}
+            position="absolute"
+            left="-20px"
+            top="50%"
+            transform="translateY(-50%)"
+            zIndex={2}
+            borderRadius="full"
+            bg="white"
+            color="gold.500"
+            boxShadow="lg"
+            _hover={{
+              bg: "gold.500",
+              color: "white",
+            }}
+            onClick={() => swiperRef.current?.slidePrev()}
+          >
+            <ChevronLeft />
+          </IconButton>
+        }
 
         {/* RIGHT */}
-        {/* <IconButton
-          aria-label="next"
-          position="absolute"
-          right="-20px"
-          top="50%"
-          transform="translateY(-50%)"
-          zIndex={2}
-          borderRadius="full"
-          bg="white"
-          color="gold.500"
-          boxShadow="lg"
-          _hover={{
-            bg: "gold.500",
-            color: "white",
-          }}
-          onClick={() => swiperRef.current?.slideNext()}
-        >
-          <ChevronRight />
-        </IconButton> */}
+        {
+          <IconButton
+            aria-label="next"
+            display={{ base: "flex", lg: "none" }}
+            position="absolute"
+            right="-20px"
+            top="50%"
+            transform="translateY(-50%)"
+            zIndex={2}
+            borderRadius="full"
+            bg="white"
+            color="gold.500"
+            boxShadow="lg"
+            _hover={{
+              bg: "gold.500",
+              color: "white",
+            }}
+            onClick={() => swiperRef.current?.slideNext()}
+          >
+            <ChevronRight />
+          </IconButton>
+        }
 
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           spaceBetween={30}
           slidesPerView={1}
-          /* 🔥 OVO JE KLJUČ */
-          allowTouchMove={false}
-          simulateTouch={false}
-          touchStartPreventDefault={true}
+          allowTouchMove={true}
+          simulateTouch={true}
+          touchStartPreventDefault={false}
           breakpoints={{
             640: { slidesPerView: 2 },
             900: { slidesPerView: 3 },
