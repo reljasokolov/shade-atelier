@@ -1,11 +1,17 @@
 "use client";
 
-import { Box, Text, Image, Button, VStack, IconButton } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Image,
+  Button,
+  VStack /*IconButton*/,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+//import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
