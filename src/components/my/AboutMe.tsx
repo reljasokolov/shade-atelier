@@ -33,7 +33,7 @@ export default function AboutMe() {
           transition={{ duration: 0.8 }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f"
+            src="src/assets/sashka.jpeg"
             borderRadius="20px"
             w={{ base: "100%", md: "400px" }}
             h="500px"
@@ -66,7 +66,6 @@ export default function AboutMe() {
             <Heading fontFamily="'Playfair Display', serif" fontSize="4xl">
               За мен
             </Heading>
-
             <MotionBox
               w="80px"
               h="2px"
@@ -76,33 +75,26 @@ export default function AboutMe() {
               whileInView={{ width: "80px" }}
               transition={{ duration: 0.6 }}
             />
-
             <Text color="gray.600" lineHeight="1.8">
-              Аз съм Деница Караджачка, професионален гримьор, базиран в София,
-              България. Имам над 10 години опит в индустрията.
+              Красотата никога не е случайност – тя е усещане.
+            </Text>
+            <Text color="gray.600" lineHeight="1.8">
+              Казвам се Сашка Марков – професионален гримьор с над 10 години
+              опит. Кариерата ми започва още в 10. клас, а през годините имах
+              честта да бъда част от екипите на MAC Cosmetics и Estée Lauder,
+              където усъвършенствах техниката си по международни стандарти.
             </Text>
 
             <Text color="gray.600" lineHeight="1.8">
-              Гримът за мен е не просто работа — той е изкуство и страст.
+              Всяка визия, която създавам, е прецизно изработена и съобразена с
+              твоите черти, стил и повод. Защото вярвам, че най-красивият грим е
+              този, който привлича погледите, но оставя хората да запомнят теб.
             </Text>
 
             <Heading fontSize="2xl" fontFamily="'Playfair Display', serif">
-              Защо да избереш мен
+              Добре дошла в Shadé Atelier. Запази своя час и нека създадем
+              визия, която няма да остане незабелязана.
             </Heading>
-
-            <VStack align="start" gap={2} color="gray.600">
-              <Text>• Индивидуален подход</Text>
-              <Text>• Премиум продукти</Text>
-              <Text>• Дълготраен резултат</Text>
-              <Text>• Висока хигиена</Text>
-            </VStack>
-
-            <Heading fontSize="2xl" fontFamily="'Playfair Display', serif">
-              Локация
-            </Heading>
-
-            <Text color="gray.600">София + мобилни услуги за събития.</Text>
-
             <Flex gap={4} pt={4}>
               <Button
                 bg="#1f2a37"

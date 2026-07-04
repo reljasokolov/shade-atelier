@@ -160,17 +160,19 @@ export default function NavBar() {
 
             <HStack>
               <Icon as={LuMail} boxSize="14px" />
-              <Text>studio@email.com</Text>
+              <Text>saskamarkov1999@gmail.com</Text>
             </HStack>
 
             <HStack>
               <Icon as={LuMapPin} boxSize="14px" />
-              <Text>Sofia</Text>
+              <Text>
+                ж.к. Овча купел 1, ул. "Василий Верешчагин" 521, 1632 София
+              </Text>
             </HStack>
 
             <HStack>
               <Icon as={LuClock} boxSize="14px" />
-              <Text>Mon-Sun 09-20</Text>
+              <Text>Пон-Нед 09-20</Text>
             </HStack>
           </HStack>
         </Flex>

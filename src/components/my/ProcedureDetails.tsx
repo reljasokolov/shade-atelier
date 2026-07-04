@@ -6,7 +6,7 @@ import night from "../../assets/night.png";
 import weding from "../../assets/weding.png";
 import everyday from "../../assets/everyday.png";
 import prom from "../../assets/prom.png";
-import tentative from "../../assets/tentative.png";
+/*import tentative from "../../assets/tentative.png";*/
 
 const data = {
   night: {
@@ -15,7 +15,7 @@ const data = {
     desc: "Професионален вечерен грим, който подчертава чертите на лицето и придава изискан и дълготраен блясък.",
     details:
       "Продължителност: 60–75 минути • Включва консултация, подготовка на кожата и фиксиране за дълготраен ефект.",
-    price: "50€",
+    price: "60€",
   },
   weding: {
     title: "Сватбен грим",
@@ -23,7 +23,7 @@ const data = {
     desc: "Елегантен и дълготраен сватбен грим, съобразен с индивидуалните черти, стил и визия на булката.",
     details:
       "Продължителност: 75–90 минути • Включва пробен грим и фиксиране за устойчивост.",
-    price: "60€",
+    price: "40€",
   },
   everyday: {
     title: "Ежедневен грим",
@@ -39,15 +39,15 @@ const data = {
     desc: "Елегантен грим за един от най-специалните дни.",
     details:
       "Продължителност: 60–75 минути • Подчертаване на очи и контуриране.",
-    price: "60€",
+    price: "70€",
   },
-  tentative: {
+  /*tentative: {
     title: "Пробен грим",
     img: tentative,
     desc: "Проба и izbor savršene vizije.",
     details: "Продължителност: 60–90 минути • Консултация и тест.",
     price: "50€",
-  },
+  },*/
 };
 
 export default function ProcedureDetails() {

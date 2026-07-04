@@ -14,7 +14,7 @@ import night from "../../assets/night.png";
 import weding from "../../assets/weding.png";
 import everyday from "../../assets/everyday.png";
 import prom from "../../assets/prom.png";
-import tentative from "../../assets/tentative.png";
+// import tentative from "../../assets/tentative.png";
 
 const MotionBox = motion(Box);
 const MotionVStack = motion(VStack);
@@ -24,7 +24,7 @@ const procedures = [
   { id: "weding", title: "Сватбен грим", price: "60€", img: weding },
   { id: "everyday", title: "Ежедневен грим", price: "40€", img: everyday },
   { id: "prom", title: "Абитуриентски грим", price: "60€", img: prom },
-  { id: "tentative", title: "Пробен грим", price: "50€", img: tentative },
+  // { id: "tentative", title: "Пробен грим", price: "50€", img: tentative },
 ];
 
 export default function ProcedureSection() {
@@ -62,7 +62,7 @@ export default function ProcedureSection() {
 
       <Box position="relative">
         {/* LEFT */}
-        <IconButton
+        {/* <IconButton
           aria-label="prev"
           position="absolute"
           left="-20px"
@@ -80,10 +80,10 @@ export default function ProcedureSection() {
           onClick={() => swiperRef.current?.slidePrev()}
         >
           <ChevronLeft />
-        </IconButton>
+        </IconButton> */}
 
         {/* RIGHT */}
-        <IconButton
+        {/* <IconButton
           aria-label="next"
           position="absolute"
           right="-20px"
@@ -101,7 +101,7 @@ export default function ProcedureSection() {
           onClick={() => swiperRef.current?.slideNext()}
         >
           <ChevronRight />
-        </IconButton>
+        </IconButton> */}
 
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}

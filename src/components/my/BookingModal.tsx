@@ -22,7 +22,7 @@ export default function BookingModal({ children }: any) {
               overflow="hidden"
             >
               <iframe
-                src="https://tidycal.com/reljasokolov05"
+                src="https://tidycal.com/saskamarkov1999?utm_source=tidycal&utm_medium=dashboard&utm_campaign=booking_link"
                 width="100%"
                 height="100%"
                 style={{ border: "none" }}
