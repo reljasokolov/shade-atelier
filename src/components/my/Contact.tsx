@@ -117,22 +117,40 @@ export default function Contact() {
           boxShadow="lg"
           gap={6}
         >
-          <Flex gap={4}>
-            <Icon as={LuPhone} />
-            <Text>+359 884 696 912</Text>
-          </Flex>
+          <Link
+            href="https://wa.me/359884696912"
+            target="_blank"
+            rel="noopener noreferrer"
+            _hover={{ textDecoration: "none" }}
+          >
+            <Flex gap={4} align="center">
+              <Icon as={LuPhone} />
+              <Text>+359 884 696 912</Text>
+            </Flex>
+          </Link>
 
-          <Flex gap={4}>
-            <Icon as={LuMapPin} />
-            <Text>
-              ж.к. Овча купел 1, ул. "Василий Верешчагин" 521, 1632 София
-            </Text>
-          </Flex>
-
-          <Flex gap={4}>
-            <Icon as={LuMail} />
-            <Text>saskamarkov1999@gmail.com</Text>
-          </Flex>
+          <Link
+            href="mailto:saskamarkov1999@gmail.com"
+            _hover={{ textDecoration: "none" }}
+          >
+            <Flex gap={4} align="center">
+              <Icon as={LuMail} />
+              <Text>saskamarkov1999@gmail.com</Text>
+            </Flex>
+          </Link>
+          <Link
+            href="https://www.google.com/maps/search/?api=1&query=ж.к.+Овча+купел+1,+ул.+Василий+Верешчагин+521,+1632+София"
+            target="_blank"
+            rel="noopener noreferrer"
+            _hover={{ textDecoration: "none" }}
+          >
+            <Flex gap={4} align="center">
+              <Icon as={LuMapPin} />
+              <Text>
+                ж.к. Овча купел 1, ул. "Василий Верешчагин" 521, 1632 София
+              </Text>
+            </Flex>
+          </Link>
         </VStack>
 
         <VStack

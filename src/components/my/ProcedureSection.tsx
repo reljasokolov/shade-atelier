@@ -20,10 +20,10 @@ const MotionBox = motion(Box);
 const MotionVStack = motion(VStack);
 
 const procedures = [
-  { id: "night", title: "Вечерен грим", price: "50€", img: night },
-  { id: "weding", title: "Сватбен грим", price: "60€", img: weding },
+  { id: "night", title: "Вечерен грим", price: "60€", img: night },
+  { id: "weding", title: "Сватбен грим", price: "70€", img: weding },
   { id: "everyday", title: "Ежедневен грим", price: "40€", img: everyday },
-  { id: "prom", title: "Абитуриентски грим", price: "60€", img: prom },
+  { id: "prom", title: "Абитуриентски грим", price: "50€", img: prom },
   // { id: "tentative", title: "Пробен грим", price: "50€", img: tentative },
 ];
 
