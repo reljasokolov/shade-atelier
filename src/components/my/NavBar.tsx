@@ -107,11 +107,11 @@ export default function NavBar() {
       height: "1px",
       bottom: "-4px",
       left: 0,
-      bg: "gold.500",
+      bg: "#B08A4A",
       transition: "width 0.4s cubic-bezier(0.25, 1, 0.5, 1)",
     },
     _hover: {
-      color: "gold.600",
+      color: "#7A5E33",
       letterSpacing: "0.5px",
       _after: { width: "100%" },
     },
@@ -138,12 +138,12 @@ export default function NavBar() {
       position="sticky"
       top="0"
       zIndex="1000"
-      transition="all 0.6s cubic-bezier(0.25, 1, 0.5, 1)"
-      bg={scrolled ? "rgba(225, 215, 173, 0.98)" : "rgba(198, 191, 156, 0.55)"}
-      backdropFilter={scrolled ? "blur(0px)" : "blur(16px)"}
-      boxShadow={scrolled ? "0 15px 40px rgba(0,0,0,0.08)" : "none"}
+      transition="all .45s ease"
+      bg={scrolled ? "rgba(229,220,207,0.98)" : "rgba(229,220,207,0.92)"}
+      backdropFilter="blur(16px)"
       borderBottom="1px solid"
-      borderColor={scrolled ? "blackAlpha.200" : "transparent"}
+      borderColor="rgba(160,140,110,.15)"
+      boxShadow={scrolled ? "0 6px 20px rgba(0,0,0,.06)" : "none"}
     >
       <Box
         display={{ base: "none", md: "block" }}
@@ -151,7 +151,7 @@ export default function NavBar() {
         transform={scrolled ? "translateY(-100%)" : "translateY(0)"}
         transition="all 0.5s ease"
       >
-        <Flex bg="gold.200" px="8" py="2" justify="center">
+        <Flex bg="rgba(229,220,207,0.98)" px="8" py="2" justify="center">
           <HStack gap="8" fontSize="sm">
             <HStack>
               <Icon as={LuPhone} boxSize="14px" />
@@ -222,13 +222,15 @@ export default function NavBar() {
             px={{ base: 4, md: 7 }}
             py={scrolled ? 5 : 6}
             borderRadius="full"
-            bg="linear-gradient(135deg,#eac48c,#d6b999)"
+            bg="#C8BBA5"
             color="black"
             fontWeight="600"
             transition="all 0.45s cubic-bezier(0.25, 1, 0.5, 1)"
             _hover={{
+              bg: "#8D7258",
+              color: "white",
               transform: "translateY(-2px)",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+              boxShadow: "0 12px 24px rgba(141,114,88,.25)",
             }}
           >
             Запази час
@@ -241,7 +243,7 @@ export default function NavBar() {
           <Drawer.Backdrop bg="blackAlpha.600" backdropFilter="blur(6px)" />
 
           <Drawer.Positioner>
-            <Drawer.Content bg="linear-gradient(180deg,#f5efe6,#e8d8b5)">
+            <Drawer.Content bg="#FAF6F1">
               <Drawer.Header>
                 <Text fontSize="2xl" fontWeight="600">
                   Shadé Atelier

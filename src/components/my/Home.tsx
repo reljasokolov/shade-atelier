@@ -10,7 +10,7 @@ export default function Home() {
         h={{ base: "500px", md: "600px" }}
         backgroundImage={`url(${banner})`}
         backgroundSize="cover"
-        backgroundPosition="center"
+        backgroundPosition={{ base: "center", md: "center 40%" }}
         position="relative"
       >
         <Box position="absolute" inset="0" bg="blackAlpha.500" />
@@ -21,9 +21,11 @@ export default function Home() {
           align="center"
           justify={{ base: "center", md: "flex-start" }}
           px={{ base: 6, md: 16 }}
+          pt={{ base: "40px", md: "120px" }}
         >
           <Box
-            backdropFilter="blur(18px)"
+            mt={{ base: 20, md: 51 }}
+            backdropFilter="blur(2px)"
             bg="rgba(206, 180, 149, 0.45)"
             border="1px solid"
             borderColor="rgba(255,255,255,0.25)"
@@ -39,15 +41,22 @@ export default function Home() {
               fontSize="32px"
               textAlign="center"
               letterSpacing="2px"
+              color="black"
             >
               Beauty Studio
             </Text>
 
-            <Heading fontSize="26px" textAlign="center" mt={1} color="gold.700">
+            <Heading fontSize="26px" textAlign="center" mt={1} color="black">
               Shadé Atelier
             </Heading>
 
-            <Text mt={5} opacity={0.85} fontSize="sm" lineHeight="1.6">
+            <Text
+              mt={5}
+              opacity={0.85}
+              fontSize="sm"
+              lineHeight="1.6"
+              color="black"
+            >
               Красотата е в детайлите. Всяка визия е създадена с внимание,
               прецизност и стремеж да подчертае естественото излъчване на всяка
               клиентка.
