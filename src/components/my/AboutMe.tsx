@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import sashka from "../../assets/sashka.jpeg";
-import BookingModal from "./BookingModal";
 
 const MotionBox = motion(Box);
 const MotionFlex = motion(Flex);
@@ -68,6 +67,7 @@ export default function AboutMe() {
             <Heading fontFamily="'Playfair Display', serif" fontSize="4xl">
               За мен
             </Heading>
+
             <MotionBox
               w="80px"
               h="2px"
@@ -77,9 +77,11 @@ export default function AboutMe() {
               whileInView={{ width: "80px" }}
               transition={{ duration: 0.6 }}
             />
+
             <Text color="gray.600" lineHeight="1.8">
               Красотата никога не е случайност – тя е усещане.
             </Text>
+
             <Text color="gray.600" lineHeight="1.8">
               Казвам се Сашка Марков – професионален гримьор с над 10 години
               опит. Кариерата ми започва още в 10. клас, а през годините имах
@@ -96,10 +98,12 @@ export default function AboutMe() {
             <Heading fontSize="2xl" fontFamily="'Playfair Display', serif">
               Добре дошла в Shadé Atelier.
             </Heading>
+
             <Heading fontSize="2xl" fontFamily="'Playfair Display', serif">
               Запази своя час и нека създадем визия, която няма да остане
               незабелязана.
             </Heading>
+
             <Flex gap={4} pt={4}>
               <Button
                 bg="#1f2a37"
@@ -118,19 +122,23 @@ export default function AboutMe() {
                 Свържи се
               </Button>
 
-              <BookingModal>
-                <Button
-                  bg="#C8BBA5"
-                  color="black"
-                  borderRadius="full"
-                  _hover={{
-                    transform: "translateY(-2px)",
-                    boxShadow: "lg",
-                  }}
-                >
-                  Запази час
-                </Button>
-              </BookingModal>
+              <Button
+                bg="#C8BBA5"
+                color="black"
+                borderRadius="full"
+                onClick={() =>
+                  window.open(
+                    "https://studio24.bg/m/sashka-markov-p17679",
+                    "_blank",
+                  )
+                }
+                _hover={{
+                  transform: "translateY(-2px)",
+                  boxShadow: "lg",
+                }}
+              >
+                Запази час
+              </Button>
             </Flex>
           </VStack>
         </MotionBox>

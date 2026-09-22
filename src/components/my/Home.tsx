@@ -1,7 +1,6 @@
 import { Box, Flex, Heading, Text, Button } from "@chakra-ui/react";
 import { RiArrowRightLine } from "react-icons/ri";
 import banner from "../../assets/banner.jpg";
-import BookingModal from "./BookingModal";
 
 export default function Home() {
   return (
@@ -61,24 +60,29 @@ export default function Home() {
               прецизност и стремеж да подчертае естественото излъчване на всяка
               клиентка.
             </Text>
-            <BookingModal>
-              <Button
-                mt={6}
-                w="full"
-                size="lg"
-                bg="linear-gradient(135deg, #C6AE8A, #d6b999)"
-                color="black"
-                fontWeight="600"
-                letterSpacing="0.5px"
-                _hover={{
-                  transform: "translateY(-2px)",
-                  boxShadow: "0 12px 35px rgba(0,0,0,0.4)",
-                }}
-              >
-                Запази час
-                <RiArrowRightLine />
-              </Button>
-            </BookingModal>
+
+            <Button
+              mt={6}
+              w="full"
+              size="lg"
+              bg="linear-gradient(135deg, #C6AE8A, #d6b999)"
+              color="black"
+              fontWeight="600"
+              letterSpacing="0.5px"
+              onClick={() =>
+                window.open(
+                  "https://studio24.bg/m/sashka-markov-p17679",
+                  "_blank",
+                )
+              }
+              _hover={{
+                transform: "translateY(-2px)",
+                boxShadow: "0 12px 35px rgba(0,0,0,0.4)",
+              }}
+            >
+              Запази час
+              <RiArrowRightLine />
+            </Button>
           </Box>
         </Flex>
       </Box>
