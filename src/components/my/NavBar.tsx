@@ -15,7 +15,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import { LuPhone, LuMail, LuMapPin, LuClock, LuMenu } from "react-icons/lu";
 import { useEffect, useState } from "react";
-import BookingModal from "./BookingModal";
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -85,7 +84,6 @@ export default function NavBar() {
 
         if (el) {
           scrollToSection(id);
-
           clearInterval(interval);
         }
       }, 50);
@@ -216,26 +214,28 @@ export default function NavBar() {
           <Icon as={LuMenu} boxSize="26px" cursor="pointer" />
         </Box>
 
-        <BookingModal>
-          <Button
-            ml={{ base: 2, md: 0 }}
-            px={{ base: 4, md: 7 }}
-            py={scrolled ? 5 : 6}
-            borderRadius="full"
-            bg="#C8BBA5"
-            color="black"
-            fontWeight="600"
-            transition="all 0.45s cubic-bezier(0.25, 1, 0.5, 1)"
-            _hover={{
-              bg: "#8D7258",
-              color: "white",
-              transform: "translateY(-2px)",
-              boxShadow: "0 12px 24px rgba(141,114,88,.25)",
-            }}
-          >
-            Запази час
-          </Button>
-        </BookingModal>
+        {/* BOOKING BUTTON */}
+        <Button
+          ml={{ base: 2, md: 0 }}
+          px={{ base: 4, md: 7 }}
+          py={scrolled ? 5 : 6}
+          borderRadius="full"
+          bg="#C8BBA5"
+          color="black"
+          fontWeight="600"
+          transition="all 0.45s cubic-bezier(0.25, 1, 0.5, 1)"
+          onClick={() =>
+            window.open("https://studio24.bg/m/sashka-markov-p17679", "_blank")
+          }
+          _hover={{
+            bg: "#8D7258",
+            color: "white",
+            transform: "translateY(-2px)",
+            boxShadow: "0 12px 24px rgba(141,114,88,.25)",
+          }}
+        >
+          Запази час
+        </Button>
       </Flex>
 
       <Drawer.Root open={open} onOpenChange={(e) => !e.open && onClose()}>

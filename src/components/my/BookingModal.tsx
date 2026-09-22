@@ -22,7 +22,7 @@ export default function BookingModal({ children }: any) {
               overflow="hidden"
             >
               <iframe
-                src="https://tidycal.com/saskamarkov1999?utm_source=tidycal&utm_medium=dashboard&utm_campaign=booking_link"
+                src="https://studio24.bg/m/sashka-markov-p17679?m?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaePzBppPAqj9Jz2BewXhggyLsqOZQWxKXohaIGpukD7W0HRTyr3Z4n5fD6Hdw_aem_xS-P4jzlfh1WREO7IOg7cg&m"
                 width="100%"
                 height="100%"
                 style={{ border: "none" }}
